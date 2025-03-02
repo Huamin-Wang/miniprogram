@@ -21,6 +21,7 @@
     </block>
     <block wx:else>
       <text>当下的努力，换来的是明天更好的自己！</text>
+      <button bindtap="getUserProfile">微信登录</button>
     </block>
   </view>
   <view class="feature-grid">
