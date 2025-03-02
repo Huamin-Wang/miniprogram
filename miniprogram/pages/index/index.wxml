@@ -1,28 +1,32 @@
-<!--index.wxml-->
-<navigation-bar title="Weixin" back="{{false}}" color="black" background="#FFF"></navigation-bar>
-<scroll-view class="scrollarea" scroll-y type="list">
-  <view class="container">
-    <view class="userinfo">
-      <block wx:if="{{canIUseNicknameComp && !hasUserInfo}}">
-        <button class="avatar-wrapper" open-type="chooseAvatar" bind:chooseavatar="onChooseAvatar">
-          <image class="avatar" src="{{userInfo.avatarUrl}}"></image>
-        </button>
-        <view class="nickname-wrapper">
-          <text class="nickname-label">昵称</text>
-          <input type="nickname" class="nickname-input" placeholder="请输入昵称" bind:change="onInputChange" />
-        </view>
+<view class="container">
+  <view class="header">
+    <text class="title">基于大模型的智能教学辅助系统</text>
+    <text class="subtitle">提升课堂教学效率，增强学生学习体验</text>
+  </view>
+  <view class="login-status">
+    <block wx:if="{{user_id}}">
+      <block wx:if="{{user_role == 'student'}}">
+        <text>欢迎, {{user_name}}同学!</text>
       </block>
-      <block wx:elif="{{!hasUserInfo}}">
-        <button wx:if="{{canIUseGetUserProfile}}" bindtap="getUserProfile"> 获取头像昵称 </button>
-        <view wx:else> 请使用2.10.4及以上版本基础库 </view>
+      <block wx:if="{{user_role == 'teacher'}}">
+        <text>欢迎, {{user_name}}老师!</text>
       </block>
-      <block wx:else>
-        <image bindtap="bindViewTap" class="userinfo-avatar" src="{{userInfo.avatarUrl}}" mode="cover"></image>
-        <text class="userinfo-nickname">{{userInfo.nickName}}</text>
+      <button bindtap="logout">登出</button>
+      <block wx:if="{{user_role == 'student'}}">
+        <button bindtap="goToStudentProfile">学生中心</button>
       </block>
-    </view>
-    <view class="usermotto">
-      <text class="user-motto">{{motto}}</text>
+      <block wx:if="{{user_role == 'teacher'}}">
+        <button bindtap="goToTeacherProfile">查看课程</button>
+      </block>
+    </block>
+    <block wx:else>
+      <text>当下的努力，换来的是明天更好的自己！</text>
+    </block>
+  </view>
+  <view class="feature-grid">
+    <view class="feature-card" wx:for="{{features}}" wx:key="title">
+      <text class="feature-title">{{item.title}}</text>
+      <text class="feature-description">{{item.description}}</text>
     </view>
   </view>
-</scroll-view>
+</view>
