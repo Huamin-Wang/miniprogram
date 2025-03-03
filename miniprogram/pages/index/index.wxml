@@ -11,7 +11,7 @@
       <block wx:if="{{user_role == 'teacher'}}">
         <text>欢迎, {{user_name}}老师!</text>
       </block>
-      <button bindtap="logout">登出</button>
+      <button bindtap="logout">退出</button>
       <block wx:if="{{user_role == 'student'}}">
         <button bindtap="goToStudentProfile">学生中心</button>
       </block>

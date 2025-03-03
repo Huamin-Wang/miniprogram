@@ -1,7 +1,9 @@
 {
   "pages": [
     "pages/index/index",
-    "pages/login/login"
+    "pages/login/login",
+    "pages/student_profile/student_profile",
+    "pages/courseDetail/courseDetail"
   ],
   "window": {
     "navigationBarTitleText": "智能教学辅助系统",

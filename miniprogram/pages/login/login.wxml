@@ -1,5 +1,5 @@
 <view class="container">
-  <view class="title">用户登录</view>
+  <view class="title">绑定账号</view>
   <view class="subtitle">如无账号，请到网页端先注册</view>
   <view class="link">
     网址：

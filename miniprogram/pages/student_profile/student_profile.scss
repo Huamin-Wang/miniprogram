@@ -1,0 +1,131 @@
+// 将以下样式添加到对应的 scss 文件中
+
+.container {
+  padding: 20rpx;
+  background-color: #f5f7fa;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  box-sizing: border-box;
+
+  .header {
+    margin: 30rpx 0;
+    padding: 30rpx;
+    background: linear-gradient(135deg, #6366f1, #8b5cf6);
+    border-radius: 16rpx;
+    box-shadow: 0 4rpx 12rpx rgba(0, 0, 0, 0.1);
+
+    .role-tip {
+      animation: fadeIn 0.5s ease-out;
+
+      .welcome-text {
+        color: #ffffff;
+        font-size: 32rpx;
+        font-weight: 500;
+      }
+    }
+  }
+
+  .course-list {
+    display: grid;
+    gap: 20rpx;
+    padding: 10rpx;
+    margin-bottom: 20rpx;
+
+    .course-item {
+      background: #ffffff;
+      border-radius: 16rpx;
+      padding: 30rpx;
+      box-shadow: 0 2rpx 10rpx rgba(0, 0, 0, 0.05);
+      transition: all 0.3s ease;
+      animation: slideUp 0.5s ease-out;
+
+      &:active {
+        transform: scale(0.98);
+        background-color: #f8f9fa;
+      }
+
+      .course-header {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        margin-bottom: 20rpx;
+
+        .course-name {
+          font-size: 34rpx;
+          font-weight: 600;
+          color: #1a1a1a;
+        }
+
+        .course-id {
+          font-size: 24rpx;
+          color: #6b7280;
+          background-color: #f3f4f6;
+          padding: 6rpx 16rpx;
+          border-radius: 30rpx;
+        }
+      }
+
+      .course-description {
+        font-size: 28rpx;
+        color: #4b5563;
+        line-height: 1.5;
+        margin: 16rpx 0;
+        display: -webkit-box;
+        -webkit-box-orient: vertical;
+        -webkit-line-clamp: 2;
+        overflow: hidden;
+      }
+
+      .teacher-info {
+        display: flex;
+        align-items: center;
+        margin-top: 20rpx;
+        padding-top: 20rpx;
+        border-top: 2rpx solid #f3f4f6;
+
+        .teacher-label {
+          font-size: 26rpx;
+          color: #6b7280;
+          margin-right: 16rpx;
+        }
+
+        .teacher-name {
+          font-size: 26rpx;
+          color: #3b82f6;
+          font-weight: 500;
+        }
+      }
+    }
+  }
+
+  .no-course-tip {
+    text-align: center;
+    padding: 100rpx 0;
+    color: #6b7280;
+    font-size: 28rpx;
+    animation: fadeIn 0.5s ease-out;
+    margin-bottom: 20rpx;
+  }
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+@keyframes slideUp {
+  from {
+    opacity: 0;
+    transform: translateY(20rpx);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
