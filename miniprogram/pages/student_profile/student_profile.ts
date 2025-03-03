@@ -3,6 +3,7 @@ interface UserInfo {
   user_id: string;
   user_name: string;
   user_role: string;
+  openid:string
 }
 
 // 定义 Course 类型
@@ -24,6 +25,7 @@ Page<{
   user_id: string;
   user_name: string;
   user_role: string;
+  openid: '', // 这里添加 openid 到 data 初始值
   courses: Course[];
 }>({
   data: {
@@ -35,14 +37,16 @@ Page<{
   onLoad(): void {
     const userData = wx.getStorageSync<UserInfo>('userInfo');
     if (userData) {
-      const { user_id, user_name, user_role } = userData;
+      const { user_id, user_name, user_role,openid } = userData;
       console.log('接收到的用户ID:', user_id);
       console.log('接收到的用户名:', user_name);
       console.log('接收到的用户角色:', user_role);
+      console.log('接收到的用户openid:', openid);
       this.setData({
         user_id,
         user_name,
-        user_role
+        user_role,
+        openid
       });
       if (user_role ==='student') {
         this.getStudentCourses();
@@ -52,8 +56,9 @@ Page<{
     }
   },
   getStudentCourses(): void {
+    const { openid } = this.data;
     wx.request<ResponseData>({
-      url: 'http://192.168.8.173/getStudentCourses', // 替换为实际的后端接口地址
+      url: `http://192.168.8.173/getStudentCourses?openid=${openid}`, // 替换为实际的后端接口地址
       method: 'GET',
       success: (res) => {
         if (res.data.success) {

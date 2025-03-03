@@ -3,7 +3,8 @@ Page({
   data: {
     course_id: null,
     courseInfo: {},
-    score:-1
+    score:-1,
+    openid:""
   },
   onLoad: function (options) {
     // 从 options 对象中获取传递过来的 course_id 参数
@@ -13,6 +14,13 @@ Page({
       this.setData({
         course_id: course_id
       });
+          // 从本地存储中获取 openid
+          const userInfo = wx.getStorageSync('userInfo');
+          if (userInfo && userInfo.openid) {
+            this.setData({
+              openid: userInfo.openid
+            });
+          }
       // 可以根据 course_id 调用接口获取课程详情信息
       console.log("详情页接收到的课程id",course_id)
       this.getCourseDetail(course_id);
@@ -21,8 +29,9 @@ Page({
     }
   },
   getCourseDetail: function (course_id) {
+    const { openid } = this.data;
     wx.request({
-      url: `http://192.168.8.173/getCourseById/${course_id}`,
+      url: `http://192.168.8.173/getCourseById/${course_id}?openid=${openid}`, 
       method: 'GET',
       success: (res) => {
         if (res.data.success) {

@@ -3,6 +3,7 @@ Page({
     user_id: null,
     user_name: '',
     user_role: '',
+    openid:"",
     features: [
       { title: '智能答疑', description: '基于大模型的实时问答系统，为学生提供24小时学习支持，快速解答各类学习疑问。' },
       { title: '个性化学习', description: '根据学生的学习进度和掌握情况，提供定制化的学习建议和资源推荐。' },
@@ -20,7 +21,8 @@ Page({
       this.setData({
         user_id: userInfo.user_id,
         user_name: userInfo.user_name,
-        user_role: userInfo.user_role
+        user_role: userInfo.user_role,
+        openid:userInfo.openid
       })
     }
   },
@@ -51,11 +53,18 @@ Page({
                   const userData = {
                     user_id: result.data.user_id,
                     user_name: result.data.user_name,
-                    user_role: result.data.user_role || 'student' // 默认为学生角色
+                    user_role: result.data.user_role || 'student' ,// 默认为学生角色
+                    openid:result.data.openid
+                  
                   }
                   // 输出 userData 到控制台
                   console.log('用户数据:', userData);
-
+ // 更新状态
+ this.setData(userData);
+                  
+ // 保存到本地存储
+ wx.setStorageSync('userInfo', userData);
+ console.log("本地存储的信息",userData);
                   // 判断 user_id 是否为 -1
                   if (userData.user_id === -1) {
                     // 跳转到登录页面，这里假设登录页面路径为 /pages/login/login
@@ -65,12 +74,7 @@ Page({
                     return;
                   }
 
-                  // 更新状态
-                  this.setData(userData)
-                  
-                  // 保存到本地存储
-                  wx.setStorageSync('userInfo', userData)
-                  
+                 
                   wx.showToast({
                     title: '登录成功'
                   })
