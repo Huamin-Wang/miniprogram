@@ -38,6 +38,9 @@ Page({
             wx.request({
               url: 'http://192.168.8.173/getOpenId',
               method: 'POST',
+              header: {
+                'Content-Type': 'application/json' // 设置请求头为 JSON 格式
+              },
               data: {
                 code: code,
                 userInfo: userInfo
@@ -47,10 +50,21 @@ Page({
                   // 假设后端返回用户角色等信息
                   const userData = {
                     user_id: result.data.user_id,
-                    user_name: userInfo.nickName,
-                    user_role: result.data.role || 'student' // 默认为学生角色
+                    user_name: result.data.user_name,
+                    user_role: result.data.user_role || 'student' // 默认为学生角色
                   }
-                  
+                  // 输出 userData 到控制台
+                  console.log('用户数据:', userData);
+
+                  // 判断 user_id 是否为 -1
+                  if (userData.user_id === -1) {
+                    // 跳转到登录页面，这里假设登录页面路径为 /pages/login/login
+                    wx.navigateTo({
+                      url: '/pages/login/login'
+                    });
+                    return;
+                  }
+
                   // 更新状态
                   this.setData(userData)
                   

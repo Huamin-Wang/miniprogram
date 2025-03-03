@@ -1,8 +1,8 @@
 {
   "pages": [
-    "pages/index/index"
+    "pages/index/index",
+    "pages/login/login"
   ],
-
   "window": {
     "navigationBarTitleText": "智能教学辅助系统",
     "navigationBarBackgroundColor": "#54fc25",
@@ -10,6 +10,4 @@
     "backgroundColor": "#f0f2f5",
     "backgroundTextStyle": "light"
   }
- 
-  
 }
