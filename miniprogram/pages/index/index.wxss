@@ -1,54 +1,295 @@
+page {
+  background-color: #f5f7fa;
+  font-family: -apple-system, BlinkMacSystemFont, 'Helvetica Neue', 'PingFang SC', 'Microsoft YaHei', sans-serif;
+}
+
 .container {
   display: flex;
   flex-direction: column;
-  align-items: center;
-  padding: 20px;
-  background-color: #f0f2f5;
+  min-height: 100vh;
 }
 
+/* 头部样式优化 */
 .header {
-  text-align: center;
-  margin-bottom: 20px;
+  background: linear-gradient(135deg, #4CAF50, #2196F3);
+  padding: 60rpx 40rpx;
+  position: relative;
+  overflow: hidden;
+}
+
+.header-content {
+  position: relative;
+  z-index: 2;
+}
+
+.header-decoration {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  height: 120rpx;
+  background: linear-gradient(to right bottom, transparent 49%, rgba(255,255,255,0.1) 50%);
 }
 
 .title {
-  font-size: 24px;
-  font-weight: bold;
-  color: #096dd9;
+  font-size: 44rpx;
+  font-weight: 600;
+  color: white;
+  margin-bottom: 16rpx;
+  text-shadow: 0 2rpx 4rpx rgba(0,0,0,0.1);
 }
 
 .subtitle {
-  font-size: 16px;
-  color: #666;
+  font-size: 28rpx;
+  color: rgba(255,255,255,0.9);
+  letter-spacing: 2rpx;
 }
 
+/* 登录状态区域样式 */
 .login-status {
-  margin-top: 20px;
+  margin: 30rpx;
+  background: white;
+  border-radius: 20rpx;
+  box-shadow: 0 4rpx 20rpx rgba(0,0,0,0.05);
+  overflow: hidden;
 }
 
-.feature-grid {
+.user-info {
   display: flex;
+  padding: 30rpx;
+  align-items: center;
+}
+
+.avatar-wrapper {
+  width: 120rpx;
+  height: 120rpx;
+  border-radius: 60rpx;
+  overflow: hidden;
+  border: 4rpx solid white;
+  box-shadow: 0 4rpx 12rpx rgba(0,0,0,0.1);
+}
+
+.user-details {
+  flex: 1;
+  margin-left: 30rpx;
+}
+
+.welcome {
+  font-size: 32rpx;
+  color: #333;
+  font-weight: 500;
+  margin-bottom: 20rpx;
+}
+
+.action-buttons {
+  display: flex;
+  gap: 20rpx;
+  margin-top: 20rpx;
   flex-wrap: wrap;
-  justify-content: space-around;
-  margin-top: 30px;
+}
+
+/* 学生中心按钮特殊样式 */
+.student-center-btn {
+  background: linear-gradient(135deg, #FF6B6B, #FF8E53);
+  color: white;
+  padding: 16rpx 40rpx;
+  border-radius: 40rpx;
+  font-size: 28rpx;
+  border: none;
+  box-shadow: 0 4rpx 15rpx rgba(255, 107, 107, 0.3);
+  position: relative;
+  overflow: hidden;
+  transition: all 0.3s ease;
+}
+
+.student-center-btn:active {
+  transform: translateY(2rpx);
+  box-shadow: 0 2rpx 8rpx rgba(255, 107, 107, 0.2);
+}
+
+/* 添加微光效果 */
+.student-center-btn::after {
+  content: '';
+  position: absolute;
+  top: -50%;
+  left: -50%;
+  width: 200%;
+  height: 200%;
+  background: linear-gradient(
+    to bottom right,
+    rgba(255, 255, 255, 0.2) 0%,
+    rgba(255, 255, 255, 0.2) 40%,
+    rgba(255, 255, 255, 0.4) 50%,
+    rgba(255, 255, 255, 0.2) 60%,
+    rgba(255, 255, 255, 0.2) 100%
+  );
+  transform: rotate(45deg);
+  animation: shimmer 3s infinite;
+}
+
+@keyframes shimmer {
+  0% {
+    transform: rotate(45deg) translateX(-100%);
+  }
+  100% {
+    transform: rotate(45deg) translateX(100%);
+  }
+}
+
+/* 教师按钮样式 */
+.teacher-btn {
+  background: linear-gradient(135deg, #4CAF50, #45a049);
+  color: white;
+  padding: 16rpx 32rpx;
+  border-radius: 40rpx;
+  font-size: 28rpx;
+  border: none;
+  box-shadow: 0 4rpx 12rpx rgba(76,175,80,0.3);
+  transition: all 0.3s ease;
+}
+
+.teacher-btn:active {
+  transform: translateY(2rpx);
+  box-shadow: 0 2rpx 8rpx rgba(76,175,80,0.2);
+}
+
+/* 次要按钮样式 */
+.secondary-btn {
+  background: #f5f5f5;
+  color: #666;
+  padding: 16rpx 32rpx;
+  border-radius: 40rpx;
+  font-size: 28rpx;
+  border: 1rpx solid #e8e8e8;
+  transition: all 0.3s ease;
+}
+
+.secondary-btn:active {
+  background: #e8e8e8;
+}
+
+/* 登录提示样式 */
+.login-prompt {
+  padding: 40rpx;
+  text-align: center;
+}
+
+.motto {
+  font-size: 30rpx;
+  color: #666;
+  margin-bottom: 30rpx;
+  display: block;
+}
+
+.login-btn {
+  background: linear-gradient(135deg, #4CAF50, #45a049);
+  color: white;
+  padding: 20rpx 60rpx;
+  border-radius: 40rpx;
+  font-size: 30rpx;
+  border: none;
+  box-shadow: 0 4rpx 12rpx rgba(76,175,80,0.3);
+}
+
+/* 功能卡片网格样式 */
+.feature-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 24rpx;
+  padding: 30rpx;
 }
 
 .feature-card {
-  background: #fff;
-  padding: 20px;
-  border-radius: 10px;
-  border: 1px solid #e8e8e8;
-  box-shadow: 0 2px 12px rgba(0,0,0,0.05);
-  margin: 10px;
-  width: 45%;
+  background: white;
+  padding: 30rpx;
+  border-radius: 16rpx;
+  box-shadow: 0 4rpx 16rpx rgba(0,0,0,0.05);
+  transition: all 0.3s ease;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.feature-card:active {
+  transform: scale(0.98);
+}
+
+.feature-icon {
+  width: 80rpx;
+  height: 80rpx;
+  background: #f0f7ff;
+  border-radius: 40rpx;
+  margin-bottom: 20rpx;
 }
 
 .feature-title {
-  color: #1890ff;
-  margin-bottom: 10px;
+  font-size: 32rpx;
+  color: #333;
+  font-weight: 500;
+  margin-bottom: 12rpx;
 }
 
 .feature-description {
+  font-size: 26rpx;
   color: #666;
+  text-align: center;
   line-height: 1.6;
+}
+
+/* 收藏按钮样式 */
+.collect-container {
+  padding: 30rpx;
+  display: flex;
+  justify-content: center;
+}
+
+.collect-btn {
+  background: white;
+  border: 2rpx solid #e8e8e8;
+  border-radius: 40rpx;
+  padding: 16rpx 40rpx;
+  display: flex;
+  align-items: center;
+  gap: 10rpx;
+  color: #666;
+  transition: all 0.3s ease;
+}
+
+.collect-btn.collected {
+  background: #fff7e6;
+  border-color: #ffd591;
+  color: #fa8c16;
+}
+
+.collect-icon {
+  width: 32rpx;
+  height: 32rpx;
+  background: #ddd;
+  border-radius: 50%;
+}
+
+/* 适配窄屏 */
+@media screen and (max-width: 375px) {
+  .feature-grid {
+    grid-template-columns: 1fr;
+  }
+  
+  .title {
+    font-size: 40rpx;
+  }
+  
+  .subtitle {
+    font-size: 26rpx;
+  }
+  
+  .action-buttons {
+    flex-direction: column;
+    gap: 15rpx;
+  }
+
+  .student-center-btn,
+  .teacher-btn,
+  .secondary-btn {
+    width: 100%;
+  }
 }

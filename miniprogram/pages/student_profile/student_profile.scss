@@ -1,12 +1,11 @@
-// 将以下样式添加到对应的 scss 文件中
-
 .container {
   padding: 20rpx;
   background-color: #f5f7fa;
   min-height: 100vh;
   display: flex;
   flex-direction: column;
-  justify-content: space-between;
+  /* 修改为 flex-start，确保内容从顶部开始排列 */
+  justify-content: flex-start;
   box-sizing: border-box;
 
   .header {

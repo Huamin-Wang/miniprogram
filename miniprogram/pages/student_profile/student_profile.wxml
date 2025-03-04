@@ -1,16 +1,15 @@
-<!-- wxml文件保持不变，但建议添加以下图标和空状态展示 -->
 <view class="container">
   <view class="header">
     <view class="role-tip" wx:if="{{user_role === 'teacher'}}">
       <text class="welcome-text">👨‍🏫 您是教师角色，欢迎进行课程管理等操作。</text>
     </view>
     
-    <view class="role-tip" wx:if="{{user_role === 'student'}}">
+    <view class="role-tip" wx:if="{{user_role ==='student'}}">
       <text class="welcome-text">👋 {{user_name}}同学，以下是你的课程。</text>
     </view>
   </view>
 
-  <view class="course-list" wx:if="{{user_role === 'student' && courses.length > 0}}">
+  <view class="course-list" wx:if="{{user_role ==='student' && courses.length > 0}}">
     <view class="course-item" wx:for="{{courses}}" wx:key="id" bindtap="goToCourseDetail" data-course_id="{{item.course_id}}">
       <view class="course-header">
         <text class="course-name">{{item.course_name}}</text>
@@ -24,7 +23,7 @@
     </view>
   </view>
 
-  <view class="no-course-tip" wx:if="{{user_role === 'student' && courses.length === 0}}">
+  <view class="no-course-tip" wx:if="{{user_role ==='student' && courses.length === 0}}">
     <text>📚 暂无课程信息</text>
   </view>
 </view>

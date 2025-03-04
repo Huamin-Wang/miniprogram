@@ -3,7 +3,7 @@ interface UserInfo {
   user_id: string;
   user_name: string;
   user_role: string;
-  openid:string
+  openid: string;
 }
 
 // 定义 Course 类型
@@ -25,19 +25,20 @@ Page<{
   user_id: string;
   user_name: string;
   user_role: string;
-  openid: '', // 这里添加 openid 到 data 初始值
+  openid: string;
   courses: Course[];
 }>({
   data: {
     user_id: '',
     user_name: '',
     user_role: '',
+    openid: '',
     courses: []
   },
   onLoad(): void {
     const userData = wx.getStorageSync<UserInfo>('userInfo');
     if (userData) {
-      const { user_id, user_name, user_role,openid } = userData;
+      const { user_id, user_name, user_role, openid } = userData;
       console.log('接收到的用户ID:', user_id);
       console.log('接收到的用户名:', user_name);
       console.log('接收到的用户角色:', user_role);
@@ -67,6 +68,9 @@ Page<{
           });
         } else {
           console.log('获取课程信息失败:', res.data);
+          wx.navigateTo({
+            url: '/pages/login/login'
+          });
         }
       },
       fail: (err) => {

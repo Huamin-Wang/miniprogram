@@ -1,33 +1,63 @@
 <view class="container">
+  <!-- 动态渐变背景的头部 -->
   <view class="header">
-    <text class="title">基于大模型的智能教学辅助系统</text>
-    <text class="subtitle">提升课堂教学效率，增强学生学习体验</text>
+    <view class="header-content">
+      <text class="title">基于大模型的智能教学辅助系统</text>
+      <text class="subtitle">提升课堂教学效率，增强学生学习体验</text>
+      <view class="header-decoration"></view>
+    </view>
   </view>
+
+  <!-- 登录状态区域 -->
   <view class="login-status">
     <block wx:if="{{user_id}}">
-      <block wx:if="{{user_role == 'student'}}">
-        <text>欢迎, {{user_name}}同学!</text>
-      </block>
-      <block wx:if="{{user_role == 'teacher'}}">
-        <text>欢迎, {{user_name}}老师!</text>
-      </block>
-      <button bindtap="logout">退出</button>
-      <block wx:if="{{user_role == 'student'}}">
-        <button bindtap="goToStudentProfile">学生中心</button>
-      </block>
-      <block wx:if="{{user_role == 'teacher'}}">
-        <button bindtap="goToTeacherProfile">查看课程</button>
-      </block>
+      <view class="user-info">
+        <view class="avatar-wrapper">
+          <open-data type="userAvatarUrl"></open-data>
+        </view>
+        <view class="user-details">
+          <block wx:if="{{user_role == 'student'}}">
+            <text class="welcome">欢迎, {{user_name}} 同学!</text>
+          </block>
+          <block wx:if="{{user_role == 'teacher'}}">
+            <text class="welcome">欢迎, {{user_name}} 老师!</text>
+          </block>
+          <view class="action-buttons">
+            <block wx:if="{{user_role == 'student'}}">
+              <button class="student-center-btn" bindtap="goToStudentProfile">学生中心</button>
+            </block>
+            <block wx:if="{{user_role == 'teacher'}}">
+              <button class="teacher-btn" bindtap="goToTeacherProfile">查看课程</button>
+            </block>
+            <button class="secondary-btn" bindtap="logout">退出</button>
+          </view>
+        </view>
+      </view>
     </block>
     <block wx:else>
-      <text>当下的努力，换来的是明天更好的自己！</text>
-      <button bindtap="getUserProfile">微信登录</button>
+      <view class="login-prompt">
+        <text class="motto">当下的努力，换来的是明天更好的自己！</text>
+        <button class="login-btn" bindtap="getUserProfile">
+          <text class="btn-text">微信一键登录</text>
+        </button>
+      </view>
     </block>
   </view>
+
+  <!-- 功能区域 -->
   <view class="feature-grid">
-    <view class="feature-card" wx:for="{{features}}" wx:key="title">
+    <view class="feature-card" wx:for="{{features}}" wx:key="title" bindtap="onFeatureClick" data-feature="{{item}}">
+      <view class="feature-icon"></view>
       <text class="feature-title">{{item.title}}</text>
       <text class="feature-description">{{item.description}}</text>
     </view>
   </view>
+
+  <!-- 收藏按钮 -->
+  <!-- <view class="collect-container">
+    <button class="collect-btn {{isCollected ? 'collected' : ''}}" bindtap="handleCollect">
+      <text class="collect-icon"></text>
+      <text>{{isCollected ? '已收藏' : '收藏'}}</text>
+    </button>
+  </view> -->
 </view>
