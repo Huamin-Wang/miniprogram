@@ -1,3 +1,4 @@
+const config = require('../../utils/config')
 // 定义 UserInfo 类型
 interface UserInfo {
   user_id: string;
@@ -59,7 +60,7 @@ Page<{
   getStudentCourses(): void {
     const { openid } = this.data;
     wx.request<ResponseData>({
-      url: `http://192.168.8.173/getStudentCourses?openid=${openid}`, // 替换为实际的后端接口地址
+      url: `${config.baseUrl}/getStudentCourses?openid=${openid}`,// 替换为实际的后端接口地址
       method: 'GET',
       success: (res) => {
         if (res.data.success) {

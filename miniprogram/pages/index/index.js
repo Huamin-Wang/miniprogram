@@ -1,3 +1,5 @@
+// pages/index/index.ts
+const config = require('../../utils/config')
 Page({
   data: {
     user_id: null,
@@ -45,7 +47,8 @@ Page({
             const code = loginRes.code
 
             wx.request({
-              url: 'http://192.168.8.173/getOpenId',
+              url: `${config.baseUrl}/getOpenId`,  // 使用 config.baseUrl
+           
               method: 'POST',
               header: {
                 'Content-Type': 'application/json' // 设置请求头为 JSON 格式

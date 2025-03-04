@@ -1,3 +1,4 @@
+const config = require('../../utils/config')
 Page({
   // 页面的初始数据
   data: {
@@ -54,7 +55,7 @@ Page({
 
       // 发送数据到后端进行验证
       wx.request({
-          url: 'http://192.168.8.173/minilogin',
+          url: `${config.baseUrl}/minilogin`,  // 使用 config.baseUrl
           method: 'POST',
           header: {
               'Content-Type': 'application/json'

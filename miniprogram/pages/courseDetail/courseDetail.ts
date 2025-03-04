@@ -1,4 +1,5 @@
 // pages/courseDetail/courseDetail.js
+const config = require('../../utils/config')
 Page({
   data: {
     course_id: null,
@@ -31,7 +32,7 @@ Page({
   getCourseDetail: function (course_id) {
     const { openid } = this.data;
     wx.request({
-      url: `http://192.168.8.173/getCourseById/${course_id}?openid=${openid}`, 
+      url: `${config.baseUrl}/getCourseById/${course_id}?openid=${openid}`,
       method: 'GET',
       success: (res) => {
         if (res.data.success) {
