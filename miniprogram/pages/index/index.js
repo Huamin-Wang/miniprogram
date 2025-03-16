@@ -16,11 +16,7 @@ Page({
     ],
     isCollected: false // 用于标记当前页面是否已收藏
   },
-  goToForum: function() {
-    wx.navigateTo({
-      url: '/pages/forum/forum', // 替换为你的论坛页面路径
-    });
-  },
+
   onLoad() {
     // 检查是否有缓存的用户信息
     const userInfo = wx.getStorageSync('userInfo')
@@ -160,7 +156,12 @@ Page({
       path: `/pages/index/index`  // 替换为实际的页面路径
     };
   },
-
+  previewQrCode: function () {
+    wx.previewImage({
+      current: 'qrcode.png', // 当前显示图片的路径
+      urls: ['qrcode.png'] // 需要预览的图片路径列表
+    });
+  },
   // 处理收藏操作
   handleCollect() {
     const { isCollected } = this.data;

@@ -3,10 +3,10 @@
   <view class="subtitle">如无账号，请到网页端先注册</view>
   <view class="link">
     网址：
-    <navigator url="http://001ai.top" target="blank">
-      <text selectable>https://001ai.top</text>
-    </navigator>
-  </view>
+    <a href="https://www.001ai.top" target="_blank">
+        <text selectable>https://www.001ai.top</text>
+    </a>
+</view>
 
   <input class="input" placeholder="请输入学号/教工号" bindinput="onUsernameInput" />
   <input class="input" placeholder="请输入密码" password bindinput="onPasswordInput" />

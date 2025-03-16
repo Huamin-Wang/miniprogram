@@ -1,3 +1,4 @@
+/* index.wxss */
 page {
   background-color: #f0f2f5;
   font-family: -apple-system, BlinkMacSystemFont, 'Helvetica Neue', Helvetica, 'PingFang SC', 'Microsoft YaHei', sans-serif;
@@ -13,9 +14,9 @@ page {
 .header {
   background: linear-gradient(135deg, #54fc25, #096dd9);
   color: white;
-  padding: 40rpx 30rpx;
+  padding: 30rpx 20rpx;
   text-align: center;
-  box-shadow: 0 4rpx 16rpx rgba(0,0,0,0.15);
+  box-shadow: 0 4rpx 16rpx rgba(0, 0, 0, 0.15);
 }
 
 .title {
@@ -27,140 +28,136 @@ page {
 .subtitle {
   font-size: 28rpx;
   opacity: 0.9;
-  margin-bottom: 30rpx;
+  margin-bottom: 20rpx; /* 增加底部间距 */
 }
 
+/* 公众号关注区域 */
+official-account {
+  margin: 15rpx 0;
+  background-color: #f5f5f5;
+}
+
+.qr-code-wrapper {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 20rpx;
+  background: #fff;
+  border-radius: 12rpx; /* 增加圆角 */
+  box-shadow: 0 2rpx 8rpx rgba(0, 0, 0, 0.08); /* 增加阴影 */
+}
+
+.qr-code {
+  width: 200rpx; /* 增大二维码尺寸 */
+  height: 200rpx;
+}
+
+.qr-hint {
+  font-size: 24rpx;
+  color: #666666;
+  margin-top: 10rpx;
+}
+
+/* 登录状态区域 */
 .login-status {
-  margin: 20rpx 0;
+  margin: 15rpx;
+  background-color: #ffffff;
+  border-radius: 12rpx;
+  padding: 20rpx;
+  box-shadow: 0 2rpx 8rpx rgba(0, 0, 0, 0.08);
+}
+
+.user-info {
+  display: flex;
+  align-items: center;
+}
+
+.avatar-container {
+  width: 100rpx;
+  height: 100rpx;
+  border-radius: 50rpx;
+  overflow: hidden;
+  margin-right: 20rpx;
+}
+
+.user-content {
+  flex: 1;
 }
 
 .welcome {
   font-size: 30rpx;
   display: block;
-  margin-bottom: 10rpx;
-}
-
-.motto {
-  font-size: 24rpx;
-  color: rgba(255, 255, 255, 0.8);
-}
-button {
-  padding: 10rpx 20rpx;
-  background-color: #1aad19;
-  color: white;
-  border: none;
-  border-radius: 5rpx;
-}
-.btn-mini {
-  font-size: 24rpx;
-  padding: 6rpx 20rpx;
-  margin: 10rpx;
-  background: transparent;
-  color: white;
-  border: 1px solid rgba(255,255,255,0.8);
-  border-radius: 30rpx;
-  display: inline-block;
-  line-height: 1.5;
-}
-
-.profile-link {
-  display: inline-block;
-  color: white;
-  font-size: 28rpx;
-  background: rgba(255,255,255,0.2);
-  border-radius: 30rpx;
-  padding: 10rpx 30rpx;
-  margin-top: 10rpx;
-}
-
-.coming-soon {
-  font-size: 24rpx;
-  color: white;
-  margin-top: 20rpx;
-  opacity: 0.9;
-  text-decoration: underline;
-}
-
-/* 主体内容 */
-.main-content {
-  flex: 1;
-  padding: 30rpx;
-  position: relative;
-}
-
-/* 登录提示 */
-.login-prompt {
-  background-color: white;
-  border-radius: 16rpx;
-  box-shadow: 0 6rpx 30rpx rgba(0,0,0,0.08);
-  padding: 40rpx;
-  margin: 20rpx 0 40rpx;
-  text-align: center;
-}
-
-.prompt-title {
-  font-size: 34rpx;
-  font-weight: bold;
-  color: #1890ff;
-  margin-bottom: 20rpx;
-}
-
-.prompt-text {
-  font-size: 28rpx;
-  color: #666;
-  margin-bottom: 30rpx;
+  margin-bottom: 15rpx;
+  color: #333333;
 }
 
 .button-group {
   display: flex;
-  justify-content: center;
-  gap: 30rpx;
+  gap: 15rpx;
 }
 
-.login-btn, .register-btn {
-  background: #1890ff;
+.btn-mini {
+  font-size: 24rpx;
+  padding: 10rpx 25rpx;
+  border-radius: 30rpx;
+  line-height: 1.5;
+  background: #1aad19;
   color: white;
-  padding: 16rpx 40rpx;
-  border-radius: 10rpx;
-  font-size: 28rpx;
+  transition: all 0.2s ease; /* 增加过渡效果 */
 }
 
-.register-btn {
-  background: #52c41a;
+.btn-mini.student {
+  background: #54fc25;
 }
 
-/* 欢迎区域 */
-.welcome-section {
+.btn-mini.teacher {
+  background: #096dd9;
+}
+
+.btn-mini.logout {
+  background: transparent;
+  border: 1px solid #666666;
+  color: #666666;
+  transition: all 0.2s ease; /* 增加过渡效果 */
+}
+
+.login-prompt {
   text-align: center;
-  margin: 40rpx 0;
+  padding: 20rpx 0;
 }
 
-.section-title {
-  font-size: 36rpx;
-  font-weight: bold;
-  color: #333;
-  margin-bottom: 10rpx;
-}
-
-.section-desc {
+.motto {
   font-size: 28rpx;
-  color: #666;
+  color: #666666;
+  margin-bottom: 20rpx;
+  display: block;
 }
 
-/* 功能卡片网格 */
+.login-btn {
+  background: #1aad19;
+  color: white;
+  padding: 15rpx 50rpx;
+  border-radius: 8rpx;
+  font-size: 30rpx;
+  border: none;
+  transition: all 0.2s ease; /* 增加过渡效果 */
+}
+
+/* 功能区域样式 */
 .feature-grid {
   display: grid;
   grid-template-columns: repeat(2, 1fr);
-  gap: 20rpx;
-  margin-top: 30rpx;
+  gap: 15rpx;
+  padding: 15rpx;
+  margin-top: 15rpx;
 }
 
 .feature-card {
-  background: white;
-  padding: 30rpx 20rpx;
-  border-radius: 16rpx;
-  box-shadow: 0 4rpx 16rpx rgba(0,0,0,0.05);
-  transition: all 0.3s;
+  background-color: white;
+  padding: 20rpx;
+  border-radius: 12rpx;
+  box-shadow: 0 2rpx 8rpx rgba(0, 0, 0, 0.05);
+  transition: all 0.2s ease; /* 增加过渡效果 */
 }
 
 .feature-card:active {
@@ -168,32 +165,45 @@ button {
   background-color: #f9f9f9;
 }
 
+.feature-icon {
+  width: 80rpx; /* 增大图标尺寸 */
+  height: 80rpx;
+  background-color: #f3f4f6;
+  border-radius: 12rpx;
+  margin-bottom: 15rpx;
+}
+
 .feature-title {
-  font-size: 30rpx;
+  font-size: 28rpx;
   font-weight: bold;
-  color: #1890ff;
-  margin-bottom: 16rpx;
+  color: #096dd9;
+  margin-bottom: 10rpx;
+  display: block;
 }
 
 .feature-desc {
   font-size: 24rpx;
-  color: #666;
-  line-height: 1.6;
+  color: #666666;
+  line-height: 1.5;
+  display: block;
 }
 
-/* 页脚 */
-.footer {
-  background-color: #001529;
-  color: rgba(255,255,255,0.8);
-  text-align: center;
-  padding: 40rpx 0;
-  font-size: 24rpx;
+/* 按钮基础样式重置 */
+button {
+  margin: 0;
+  padding: 0;
+  line-height: normal;
 }
 
-.copyright {
-  margin-bottom: 10rpx;
+.title,
+.subtitle {
+  display: block;
 }
 
-.beian {
-  opacity: 0.8;
+button::after {
+  border: none;
+}
+
+.button-hover {
+  opacity: 0.9;
 }
