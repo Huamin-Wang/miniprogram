@@ -16,20 +16,22 @@
           <open-data type="userAvatarUrl"></open-data>
         </view>
         <view class="user-details">
-          <block wx:if="{{user_role == 'student'}}">
+          <block wx:if="{{user_role =='student'}}">
             <text class="welcome">欢迎, {{user_name}} 同学!</text>
           </block>
           <block wx:if="{{user_role == 'teacher'}}">
             <text class="welcome">欢迎, {{user_name}} 老师!</text>
           </block>
           <view class="action-buttons">
-            <block wx:if="{{user_role == 'student'}}">
+            <block wx:if="{{user_role =='student'}}">
               <button class="student-center-btn" bindtap="goToStudentProfile">学生中心</button>
             </block>
             <block wx:if="{{user_role == 'teacher'}}">
               <button class="teacher-btn" bindtap="goToTeacherProfile">查看课程</button>
             </block>
             <button class="secondary-btn" bindtap="logout">退出</button>
+            <!-- 新增的论坛按钮 -->
+            <button class="forum-btn" bindtap="goToForum">进入匿名论坛</button>
           </view>
         </view>
       </view>
@@ -40,6 +42,8 @@
         <button class="login-btn" bindtap="getUserProfile">
           <text class="btn-text">微信一键登录</text>
         </button>
+          <!-- 新增的论坛按钮 -->
+          <button class="forum-btn" bindtap="goToForum">进入匿名论坛</button>
       </view>
     </block>
   </view>
@@ -55,9 +59,9 @@
 
   <!-- 收藏按钮 -->
   <!-- <view class="collect-container">
-    <button class="collect-btn {{isCollected ? 'collected' : ''}}" bindtap="handleCollect">
+    <button class="collect-btn {{isCollected? 'collected' : ''}}" bindtap="handleCollect">
       <text class="collect-icon"></text>
-      <text>{{isCollected ? '已收藏' : '收藏'}}</text>
+      <text>{{isCollected? '已收藏' : '收藏'}}</text>
     </button>
   </view> -->
 </view>

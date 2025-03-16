@@ -3,7 +3,8 @@
     "pages/index/index",
     "pages/login/login",
     "pages/student_profile/student_profile",
-    "pages/courseDetail/courseDetail"
+    "pages/courseDetail/courseDetail",
+    "pages/forum/forum"
   ],
   "window": {
     "navigationBarTitleText": "智能教学辅助系统",

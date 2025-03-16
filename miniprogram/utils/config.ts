@@ -1,4 +1,4 @@
 // utils/config.ts
 module.exports = {
-  baseUrl: 'http://192.168.8.173'
+  baseUrl: 'https://www.001ai.top'
 }
