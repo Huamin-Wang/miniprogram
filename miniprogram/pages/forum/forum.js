@@ -179,7 +179,13 @@ Page({
     const date = new Date(timestamp);
     return `${date.getFullYear()}-${this.padZero(date.getMonth() + 1)}-${this.padZero(date.getDate())} ${this.padZero(date.getHours())}:${this.padZero(date.getMinutes())}`;
   },
-
+  hidePostForm: function() {
+    this.setData({
+      isFormVisible: false,
+      tempImageUrl: '',
+      tempFilePath: ''
+    });
+  },
   padZero: function(num) {
     return num < 10 ? '0' + num : num;
   }

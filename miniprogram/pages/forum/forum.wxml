@@ -14,16 +14,23 @@
       </view>
     </block>
   </view>
-
-  <view class="post-form" wx:if="{{isFormVisible}}">
+  <view class="post-form-overlay" wx:if="{{isFormVisible}}">
+  <view class="post-form">
+    <view class="form-header">
+      <text class="form-title">发布新帖子</text>
+      <text class="close-button" bindtap="hidePostForm">×</text>
+    </view>
     <form bindsubmit="submitPost">
-      <input name="title" placeholder="帖子标题" required />
-      <textarea name="content" placeholder="帖子内容" required></textarea>
-      <button type="button" bindtap="chooseImage">添加图片</button>
+      <input class="form-input" name="title" placeholder="帖子标题" required />
+      <textarea class="form-textarea" name="content" placeholder="帖子内容" required></textarea>
+      <view class="image-section">
+        <button class="image-button" type="button" bindtap="chooseImage">添加图片</button>
+      </view>
       <image wx:if="{{tempImageUrl}}" src="{{tempImageUrl}}" mode="aspectFit" class="preview-image"></image>
-      <button form-type="submit" type="primary" loading="{{isLoading}}">发布</button>
+      <button class="submit-button" form-type="submit" type="primary" loading="{{isLoading}}">发布</button>
     </form>
   </view>
+</view>
 
   <view class="loading-indicator" wx:if="{{isLoading}}">加载中...</view>
 </view>
