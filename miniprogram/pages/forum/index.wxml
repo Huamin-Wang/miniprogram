@@ -1,0 +1,44 @@
+<!-- pages/forum/forum.wxml -->
+<view class="container">
+  <view class="header">
+    <text class="title">说就完事了</text>
+    <button id="postButton" bindtap="togglePostForm">发布新帖子</button>
+    
+    <view id="postForm" class="post-form" wx:if="{{isPostFormVisible}}">
+      <form bindsubmit="submitPost">
+        <input name="title" placeholder="帖子标题" required />
+        <textarea name="content" placeholder="帖子内容" required></textarea>
+        
+        <button class="upload-btn" bindtap="chooseImage">选择图片</button>
+        <image wx:if="{{tempImagePath}}" src="{{tempImagePath}}" mode="aspectFit" class="preview-image"></image>
+        
+        <button form-type="submit">发帖</button>
+      </form>
+      <text id="statusMessage">{{statusMessage}}</text>
+      <view id="loadingIndicator" wx:if="{{isLoading}}">图片有点大，正在提交，请稍候...</view>
+    </view>
+    
+    <text class="subtitle" wx:if="{{isPostFormVisible}}">良言一句三冬暖</text>
+  </view>
+  
+  <view id="loadingMessage" wx:if="{{isLoadingPosts}}">加载中...</view>
+  
+  <view id="posts">
+    <view wx:for="{{posts}}" wx:key="id" class="post">
+      <navigator url="/pages/post/post?id={{item.id}}" class="post-title">{{item.title}}</navigator>
+      <view class="timestamp">{{item.formattedTime}}</view>
+      <image wx:if="{{item.uniqueFilename}}" src="{{item.imageUrl}}" mode="aspectFit" class="post-image" lazy-load="true" data-id="{{item.id}}" bindtap="navigateToPost"></image>
+    </view>
+  </view>
+  
+  <view id="pagination" class="pagination">
+    <button 
+      wx:for="{{totalPages}}" 
+      wx:key="index" 
+      bindtap="loadPage" 
+      data-page="{{index + 1}}"
+      class="{{currentPage === index + 1 ? 'active' : ''}}">
+      {{index + 1}}
+    </button>
+  </view>
+</view>

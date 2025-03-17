@@ -51,7 +51,35 @@ official-account {
   width: 200rpx; /* 增大二维码尺寸 */
   height: 200rpx;
 }
+/* 美化进入论坛按钮 */
+.forum-btn {
+  /* 按钮背景颜色 */
+  background-color: #007aff;
+  /* 文字颜色 */
+  color: white;
+  /* 按钮圆角 */
+  border-radius: 20px;
+  /* 按钮内边距 */
+  padding: 10px 20px;
+  /* 文字大小 */
+  font-size: 16px;
+  /* 去除边框 */
+  border: none;
+  /* 鼠标指针样式 */
+  cursor: pointer;
+  /* 过渡效果，使颜色变化更平滑 */
+  transition: background-color 0.3s ease;
+}
 
+/* 鼠标悬停时的样式 */
+.forum-btn:hover {
+  background-color: #0056b3;
+}
+
+/* 按钮被按下时的样式 */
+.forum-btn:active {
+  background-color: #003d80;
+}    
 .qr-hint {
   font-size: 24rpx;
   color: #666666;

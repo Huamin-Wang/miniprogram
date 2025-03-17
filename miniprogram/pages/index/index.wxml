@@ -35,6 +35,8 @@
               {{user_role === 'student' ? '学生中心' : '查看课程'}}
             </button>
             <button class="btn-mini logout" bindtap="logout">退出</button>
+             <!-- 新增的论坛按钮 -->
+             <button class="forum-btn" bindtap="goToForum">进入论坛</button>
           </view>
         </view>
       </view>
@@ -43,6 +45,8 @@
       <view class="login-prompt">
         <text class="motto">当下的努力，换来的是明天更好的自己！</text>
         <button class="login-btn" bindtap="getUserProfile">微信一键登录</button>
+         <!-- 新增的论坛按钮 -->
+         <button class="forum-btn" bindtap="goToForum">进入论坛</button>
       </view>
     </block>
   </view>

@@ -1,0 +1,38 @@
+<!-- pages/post/post.wxml -->
+<view class="container">
+  <view class="post-header">
+    <text class="post-title">{{postTitle}}</text>
+    <text class="post-timestamp">{{postTimestamp}}</text>
+  </view>
+  
+  <view class="post-content">{{postContent}}</view>
+  
+  <image wx:if="{{postImageUrl}}" class="post-image" src="{{postImageUrl}}" mode="widthFix"></image>
+  
+  <view class="divider"></view>
+  
+  <view class="replies-section">
+    <text class="replies-header">回复 ({{replies.length}})</text>
+    
+    <view class="reply-list">
+      <view wx:for="{{replies}}" wx:key="index" class="reply">
+        <view class="reply-content">
+          <text class="reply-floor">{{index + 1}}楼: </text>
+          <text>{{item.content}}</text>
+        </view>
+        <view class="reply-footer">
+          <text class="reply-timestamp">{{item.formattedTime}}</text>
+          <view class="reaction-buttons">
+            <button class="{{item.liked ? 'liked' : ''}}" bindtap="handleLike" data-index="{{index}}">👍 {{item.likes || 0}}</button>
+            <button class="{{item.disliked ? 'disliked' : ''}}" bindtap="handleDislike" data-index="{{index}}">👎 {{item.dislikes || 0}}</button>
+          </view>
+        </view>
+      </view>
+    </view>
+    
+    <form class="reply-form" bindsubmit="submitReply">
+      <input name="content" placeholder="写下你的评论..." />
+      <button form-type="submit" loading="{{isLoading}}">发送</button>
+    </form>
+  </view>
+</view>

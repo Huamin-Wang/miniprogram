@@ -1,4 +1,5 @@
 // pages/index/index.ts
+
 const config = require('../../utils/config')
 Page({
   data: {
@@ -128,6 +129,11 @@ Page({
     })
   },
 
+ goToForum: function() {
+  wx.navigateTo({
+    url: '/pages/forum/index', // 替换为你的论坛页面路径
+  });
+},
   goToStudentProfile() {
     wx.navigateTo({
       url: '/pages/student_profile/student_profile'

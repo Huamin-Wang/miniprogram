@@ -23,7 +23,7 @@
   },
   "include": [
     "./**/*.ts"
-  ],
+, "miniprogram/pages/forum/index.js"  ],
   "exclude": [
     "node_modules"
   ]
