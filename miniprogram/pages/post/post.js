@@ -65,17 +65,16 @@ Page({
     }
   },
 
-  loadPostImage: async function(uniqueFilename) {
-    try {
-      const imagePath = `https://gitee.com/api/v5/repos/${api.owner}/${api.imgs_repo}/contents/${api.image_folder}/${uniqueFilename}`;
-      const imageUrl = await api.fetchImage(imagePath);
-      this.setData({
-        postImageUrl: imageUrl
-      });
-    } catch (error) {
-      console.error('Error loading image:', error);
-    }
-  },
+loadPostImage: async function(uniqueFilename) {
+  try {
+    const imageUrl = `${api.imageBaseUrl}${uniqueFilename}`;
+    this.setData({
+      postImageUrl: imageUrl
+    });
+  } catch (error) {
+    console.error('Error loading image:', error);
+  }
+},
 
   onReplyInput: function(e) {
     this.setData({
