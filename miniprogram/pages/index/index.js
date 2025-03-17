@@ -131,7 +131,7 @@ Page({
 
  goToForum: function() {
   wx.navigateTo({
-    url: '/pages/forum/index', // 替换为你的论坛页面路径
+    url: '/pages/forum/forum', // 替换为你的论坛页面路径
   });
 },
   goToStudentProfile() {

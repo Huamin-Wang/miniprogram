@@ -1,0 +1,29 @@
+<!-- pages/forum/forum.wxml -->
+<view class="container">
+  <view class="header">
+    <text class="title">匿名学习吐槽站</text>
+    <button class="post-button" bindtap="showPostForm">发布新帖子</button>
+  </view>
+
+  <view class="post-list">
+    <block wx:for="{{posts}}" wx:key="id">
+      <view class="post-item" bindtap="navigateToPost" data-id="{{item.id}}">
+        <text class="post-title">{{item.title}}</text>
+        <text class="post-timestamp">{{item.formattedTime}}</text>
+        <image wx:if="{{item.hasImage}}" class="post-thumbnail" src="{{item.imageThumbnail}}" mode="aspectFill"></image>
+      </view>
+    </block>
+  </view>
+
+  <view class="post-form" wx:if="{{isFormVisible}}">
+    <form bindsubmit="submitPost">
+      <input name="title" placeholder="帖子标题" required />
+      <textarea name="content" placeholder="帖子内容" required></textarea>
+      <button type="button" bindtap="chooseImage">添加图片</button>
+      <image wx:if="{{tempImageUrl}}" src="{{tempImageUrl}}" mode="aspectFit" class="preview-image"></image>
+      <button form-type="submit" type="primary" loading="{{isLoading}}">发布</button>
+    </form>
+  </view>
+
+  <view class="loading-indicator" wx:if="{{isLoading}}">加载中...</view>
+</view>

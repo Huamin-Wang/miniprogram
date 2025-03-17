@@ -4,9 +4,8 @@
     "pages/login/login",
     "pages/student_profile/student_profile",
     "pages/courseDetail/courseDetail",
-    "pages/forum/index",
-    "pages/forum/post/post",
-    "pages/forum/app"
+    "pages/forum/forum",
+    "pages/post/post"
   ],
   "window": {
     "navigationBarTitleText": "智能教学辅助系统",
