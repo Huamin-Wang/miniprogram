@@ -21,7 +21,7 @@
       <text class="close-button" bindtap="hidePostForm">×</text>
     </view>
     <form bindsubmit="submitPost">
-      <input class="form-input" name="title" placeholder="帖子标题" required />
+<input class="form-input" name="title" placeholder="帖子标题" required maxlength="50" style="height: 100rpx;" />
       <textarea class="form-textarea" name="content" placeholder="帖子内容" required></textarea>
       <view class="image-section">
         <button class="image-button" type="button" bindtap="chooseImage">添加图片</button>
@@ -33,4 +33,5 @@
 </view>
 
   <view class="loading-indicator" wx:if="{{isLoading}}">加载中...</view>
+
 </view>
