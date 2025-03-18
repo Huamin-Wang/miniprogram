@@ -1,8 +1,8 @@
 <!-- pages/forum/forum.wxml -->
 <view class="container">
   <view class="header">
-    <text class="title">匿名学习吐槽站</text>
-    <button class="post-button" bindtap="showPostForm">发布新帖子</button>
+    <text class="title">仔细浏览，认真落实</text>
+    <button class="post-button" bindtap="showPostForm">发布信息</button>
   </view>
 
   <view class="post-list">
@@ -17,12 +17,12 @@
   <view class="post-form-overlay" wx:if="{{isFormVisible}}">
   <view class="post-form">
     <view class="form-header">
-      <text class="form-title">发布新帖子</text>
+      <text class="form-title">发布通知</text>
       <text class="close-button" bindtap="hidePostForm">×</text>
     </view>
     <form bindsubmit="submitPost">
-<input class="form-input" name="title" placeholder="帖子标题" required maxlength="50" style="height: 100rpx;" />
-      <textarea class="form-textarea" name="content" placeholder="帖子内容" required></textarea>
+<input class="form-input" name="title" placeholder="通知标题" required maxlength="50" style="height: 100rpx;" />
+      <textarea class="form-textarea" name="content" placeholder="通知内容" required></textarea>
       <view class="image-section">
         <button class="image-button" type="button" bindtap="chooseImage">添加图片</button>
       </view>
