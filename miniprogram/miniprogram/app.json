@@ -1,0 +1,17 @@
+{
+  "pages": [
+    "pages/index/index",
+    "pages/login/login",
+    "pages/student_profile/student_profile",
+    "pages/courseDetail/courseDetail",
+    "pages/forum/forum",
+    "pages/post/post"
+  ],
+  "window": {
+    "navigationBarTitleText": "智能教学辅助系统",
+    "navigationBarBackgroundColor": "#54fc25",
+    "navigationBarTextStyle": "white",
+    "backgroundColor": "#f0f2f5",
+    "backgroundTextStyle": "light"
+  }
+}

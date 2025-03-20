@@ -1,0 +1,53 @@
+.container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  height: 100vh;
+  background: #f5f7fa;
+  padding: 20px;
+}
+
+.title {
+  font-size: 24px;
+  font-weight: bold;
+  color: #333;
+  margin-bottom: 10px;
+}
+
+.subtitle {
+  font-size: 14px;
+  color: #666;
+  margin-bottom: 5px;
+}
+
+.link {
+  font-size: 14px;
+  color: #007aff;
+  margin-bottom: 20px;
+}
+
+.input {
+  width: 80%;
+  padding: 12px;
+  font-size: 16px;
+  border-radius: 8px;
+  border: 1px solid #ddd;
+  margin-bottom: 15px;
+  background: #fff;
+}
+
+.login-btn {
+  width: 80%;
+  padding: 12px;
+  font-size: 18px;
+  color: #fff;
+  background: #007aff;
+  border-radius: 8px;
+  text-align: center;
+  margin-top: 10px;
+}
+
+.login-btn:active {
+  background: #005ecb;
+}
