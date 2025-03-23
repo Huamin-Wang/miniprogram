@@ -1,67 +1,77 @@
 <!-- index.wxml -->
 <view class="container">
-  <!-- 头部 -->
+  <!-- Enhanced Header -->
   <view class="header">
     <view class="header-content">
       <text class="title">基于大模型的智能教学辅助系统</text>
-    </view><text class="subtitle">提升课堂教学效率，增强学生学习体验</text>
+      <text class="subtitle">提升课堂教学效率，增强学生学习体验</text>
+    </view>
   </view>
 
-  <!-- 公众号关注区域 -->
-  <official-account></official-account>
-  <view class="qr-code-wrapper">
-    <image 
-      class="qr-code" 
-      src="qrcode.png" 
-      mode="aspectFit" 
-      show-menu-by-longpress="{{true}}"
-    ></image>
-    <text class="qr-hint">长按识别二维码关注公众号</text>
-  </view>
-
-  <!-- 登录状态区域 -->
-  <view class="login-status">
-    <block wx:if="{{user_id}}">
-      <view class="user-info">
-        <view class="avatar-container">
-          <open-data type="userAvatarUrl"></open-data>
-        </view>
-        <view class="user-content">
-          <text class="welcome">欢迎, {{user_name}} {{user_role === 'student' ? '同学' : '老师'}}!</text>
-          <view class="button-group">
-            <button 
-              class="btn-mini {{user_role === 'student' ? 'student' : 'teacher'}}"
-              bindtap="{{user_role === 'student' ? 'goToStudentProfile' : 'goToTeacherProfile'}}">
-              {{user_role === 'student' ? '学生中心' : '查看课程'}}
-            </button>
-            <button class="btn-mini logout" bindtap="logout">退出</button>
-             <!-- 新增的论坛按钮 -->
-             <button class="forum-btn" bindtap="goToForum">浏览通知信息</button>
+  <!-- User Section -->
+  <view class="user-section">
+    <view class="login-status">
+      <block wx:if="{{user_id}}">
+        <view class="user-info">
+          <view class="avatar-container">
+            <open-data type="userAvatarUrl"></open-data>
+          </view>
+          <view class="user-content">
+            <text class="welcome">欢迎, {{user_name}} {{user_role === 'student' ? '同学' : '老师'}}!</text>
+            <view class="button-group">
+              <button
+                class="btn-primary {{user_role === 'student' ? 'student' : 'teacher'}}"
+                bindtap="{{user_role === 'student' ? 'goToStudentProfile' : 'goToTeacherProfile'}}">
+                {{user_role === 'student' ? '学生中心' : '教师中心'}}
+              </button>
+              <button class="btn-secondary" bindtap="logout">退出</button>
+            </view>
           </view>
         </view>
-      </view>
-    </block>
-    <block wx:else>
-      <view class="login-prompt">
-        <text class="motto">当下的努力，换来的是明天更好的自己！</text>
-        <button class="login-btn" bindtap="getUserProfile">微信一键登录</button>
-         <!-- 新增的论坛按钮 -->
-         <button class="forum-btn" bindtap="goToForum">浏览通知信息</button>
-      </view>
-    </block>
+      </block>
+      <block wx:else>
+        <view class="login-prompt">
+          <text class="motto">当下的努力，换来的是明天更好的自己！</text>
+          <button class="btn-primary" bindtap="getUserProfile">微信一键登录</button>
+        </view>
+      </block>
+    </view>
   </view>
 
-  <!-- 功能区域 -->
+  <!-- Notification Bar -->
+  <view class="notification-bar" bindtap="goToForum">
+    <text class="notification-icon">📢</text>
+    <text class="notification-text">查看最新通知信息</text>
+    <text class="notification-arrow">→</text>
+  </view>
+
+  <!-- Feature Grid
+  <view class="section-title">功能导航</view>
   <view class="feature-grid">
-    <view 
-      class="feature-card" 
-      wx:for="{{features}}" 
-      wx:key="title" 
-      bindtap="onFeatureClick" 
+    <view
+      class="feature-card"
+      wx:for="{{features}}"
+      wx:key="title"
+      hover-class="card-hover"
+      bindtap="onFeatureClick"
       data-feature="{{item}}">
       <view class="feature-icon"></view>
       <text class="feature-title">{{item.title}}</text>
       <text class="feature-desc">{{item.description}}</text>
     </view>
-  </view>
-</view>  
+  </view> -->
+
+  <!-- Follow Section -->
+  <view class="follow-section">
+    <view class="section-title">关注我们</view>
+    <official-account></official-account>
+    <view class="qr-code-wrapper">
+      <image
+        class="qr-code"
+        src="qrcode.png"
+        mode="aspectFit"
+        show-menu-by-longpress="{{true}}">
+      </image>
+      <text class="qr-hint">长按识别二维码关注公众号</text>
+    </view>
+  </view></view>

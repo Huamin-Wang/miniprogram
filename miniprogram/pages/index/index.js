@@ -7,6 +7,7 @@ Page({
     user_name: '',
     user_role: '',
     openid: "",
+    user_identifier:"",
     features: [
       { title: '智能答疑', description: '基于大模型的实时问答系统，为学生提供24小时学习支持，快速解答各类学习疑问。' },
       { title: '个性化学习', description: '根据学生的学习进度和掌握情况，提供定制化的学习建议和资源推荐。' },
@@ -26,7 +27,8 @@ Page({
         user_id: userInfo.user_id,
         user_name: userInfo.user_name,
         user_role: userInfo.user_role,
-        openid: userInfo.openid
+        openid: userInfo.openid,
+        user_identifier:userInfo.user_identifier,
       })
     }
     // 检查当前页面是否已收藏
@@ -65,7 +67,8 @@ Page({
                     user_id: result.data.user_id,
                     user_name: result.data.user_name,
                     user_role: result.data.user_role || 'student',// 默认为学生角色
-                    openid: result.data.openid
+                    openid: result.data.openid,
+                    user_identifier:result.data.user_identifier
 
                   }
                   // 输出 userData 到控制台
@@ -120,7 +123,8 @@ Page({
       user_id: null,
       user_name: '',
       user_role: '',
-      openid: ""
+      openid: "",
+      user_identifier:''
     })
     // 清除存储
     wx.removeStorageSync('userInfo')

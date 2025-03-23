@@ -63,7 +63,7 @@ Page({
           data: {
               identifier,
               password,
-              openid
+              openid,
           },
           success: (res) => {
               if (res.data.success) {
@@ -76,7 +76,8 @@ Page({
                       ...wx.getStorageSync('userInfo'),
                       user_id: res.data.user_id,
                       user_name: res.data.user_name,
-                      user_role: res.data.user_role
+                      user_role: res.data.user_role,
+                      user_identifier:res.data.user_identifier
                   });
                   // 登录成功后进行页面跳转
                   wx.navigateTo({

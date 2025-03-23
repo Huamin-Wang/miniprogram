@@ -6,6 +6,7 @@ interface UserInfo {
   user_name: string;
   user_role: string;
   openid: string;
+  user_identifier:string
 }
 
 // 定义 Course 类型
@@ -55,9 +56,11 @@ Page<{
   assignments: Assignment[];
   isLoading: boolean;
   selectedMenu: string;
+  user_identifier:string;
 }>({
   data: {
     user_id: '',
+    user_identifier:'',
     user_name: '',
     user_role: '',
     openid: '',
@@ -70,7 +73,7 @@ Page<{
   onLoad(): void {
     const userData = wx.getStorageSync<UserInfo>('userInfo');
     if (userData) {
-      const { user_id, user_name, user_role, openid } = userData;
+      const { user_id, user_name, user_role, openid,user_identifier } = userData;
       console.log('接收到的用户ID:', user_id);
       console.log('接收到的用户名:', user_name);
       console.log('接收到的用户角色:', user_role);
@@ -79,7 +82,8 @@ Page<{
         user_id,
         user_name,
         user_role,
-        openid
+        openid,
+        user_identifier
       });
       if (user_role === 'student') {
         // 并行请求课程和作业数据
@@ -162,6 +166,13 @@ Page<{
       }
     });
   },
+  // 判断截止日期是否临近（3天内）
+  isDeadlineSoon(deadlineStr: string): boolean {
+    const deadline = new Date(deadlineStr);
+    const now = new Date();
+    const diffInDays = Math.floor((deadline.getTime() - now.getTime()) / (1000 * 60 * 60 * 24));
+    return diffInDays <= 3 && diffInDays >= 0;
+  },
   // 菜单切换
   selectMenu(e: WechatMiniprogram.TouchEvent): void {
     const menu = e.currentTarget.dataset.menu as string;
@@ -169,7 +180,7 @@ Page<{
       selectedMenu: menu
     });
   },
-  copyUrl: function() {
+  copyUrl(): void {
     wx.setClipboardData({
       data: 'https://www.001ai.top',
       success: function() {
