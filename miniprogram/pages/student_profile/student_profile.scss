@@ -1,130 +1,256 @@
 .container {
-  padding: 20rpx;
-  background-color: #f5f7fa;
+  padding: 30rpx;
+  background-color: #f6f7fb;
   min-height: 100vh;
-  display: flex;
-  flex-direction: column;
-  /* 修改为 flex-start，确保内容从顶部开始排列 */
-  justify-content: flex-start;
-  box-sizing: border-box;
-
-  .header {
-    margin: 30rpx 0;
-    padding: 30rpx;
-    background: linear-gradient(135deg, #6366f1, #8b5cf6);
-    border-radius: 16rpx;
-    box-shadow: 0 4rpx 12rpx rgba(0, 0, 0, 0.1);
-
-    .role-tip {
-      animation: fadeIn 0.5s ease-out;
-
-      .welcome-text {
-        color: #ffffff;
-        font-size: 32rpx;
-        font-weight: 500;
-      }
-    }
-  }
-
-  .course-list {
-    display: grid;
-    gap: 20rpx;
-    padding: 10rpx;
-    margin-bottom: 20rpx;
-
-    .course-item {
-      background: #ffffff;
-      border-radius: 16rpx;
-      padding: 30rpx;
-      box-shadow: 0 2rpx 10rpx rgba(0, 0, 0, 0.05);
-      transition: all 0.3s ease;
-      animation: slideUp 0.5s ease-out;
-
-      &:active {
-        transform: scale(0.98);
-        background-color: #f8f9fa;
-      }
-
-      .course-header {
-        display: flex;
-        justify-content: space-between;
-        align-items: center;
-        margin-bottom: 20rpx;
-
-        .course-name {
-          font-size: 34rpx;
-          font-weight: 600;
-          color: #1a1a1a;
-        }
-
-        .course-id {
-          font-size: 24rpx;
-          color: #6b7280;
-          background-color: #f3f4f6;
-          padding: 6rpx 16rpx;
-          border-radius: 30rpx;
-        }
-      }
-
-      .course-description {
-        font-size: 28rpx;
-        color: #4b5563;
-        line-height: 1.5;
-        margin: 16rpx 0;
-        display: -webkit-box;
-        -webkit-box-orient: vertical;
-        -webkit-line-clamp: 2;
-        overflow: hidden;
-      }
-
-      .teacher-info {
-        display: flex;
-        align-items: center;
-        margin-top: 20rpx;
-        padding-top: 20rpx;
-        border-top: 2rpx solid #f3f4f6;
-
-        .teacher-label {
-          font-size: 26rpx;
-          color: #6b7280;
-          margin-right: 16rpx;
-        }
-
-        .teacher-name {
-          font-size: 26rpx;
-          color: #3b82f6;
-          font-weight: 500;
-        }
-      }
-    }
-  }
-
-  .no-course-tip {
-    text-align: center;
-    padding: 100rpx 0;
-    color: #6b7280;
-    font-size: 28rpx;
-    animation: fadeIn 0.5s ease-out;
-    margin-bottom: 20rpx;
-  }
 }
 
-@keyframes fadeIn {
-  from {
-    opacity: 0;
-  }
-  to {
-    opacity: 1;
-  }
+/* 顶部卡片样式 */
+.header-card {
+  background: linear-gradient(135deg, #4c6ef5, #228be6);
+  border-radius: 24rpx;
+  padding: 40rpx 30rpx;
+  margin-bottom: 40rpx;
+  box-shadow: 0 8rpx 16rpx rgba(76, 110, 245, 0.1);
+  animation: fadeInDown 0.5s ease;
 }
 
-@keyframes slideUp {
+@keyframes fadeInDown {
   from {
     opacity: 0;
-    transform: translateY(20rpx);
+    transform: translateY(-20rpx);
   }
   to {
     opacity: 1;
     transform: translateY(0);
   }
 }
+
+.welcome-text {
+  color: #ffffff;
+  font-size: 36rpx;
+  font-weight: 600;
+  display: block;
+}
+
+.sub-text {
+  color: rgba(255, 255, 255, 0.9);
+  font-size: 28rpx;
+  margin-top: 10rpx;
+  display: block;
+}
+
+/* 区块标题样式 */
+.section-title {
+  font-size: 32rpx;
+  font-weight: 600;
+  color: #1a1a1a;
+  margin: 30rpx 0 20rpx;
+  padding-left: 20rpx;
+  position: relative;
+}
+
+.section-title::before {
+  content: '';
+  position: absolute;
+  left: 0;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 8rpx;
+  height: 32rpx;
+  background: #4c6ef5;
+  border-radius: 4rpx;
+}
+
+/* 作业卡片样式 */
+.assignments-container {
+  margin-bottom: 40rpx;
+}
+
+.assignment-card {
+  background: #ffffff;
+  border-radius: 16rpx;
+  padding: 24rpx;
+  margin-bottom: 20rpx;
+  box-shadow: 0 2rpx 8rpx rgba(0, 0, 0, 0.05);
+  transition: all 0.3s ease;
+}
+
+.assignment-card:hover {
+  box-shadow: 0 4rpx 16rpx rgba(0, 0, 0, 0.1);
+  transform: translateY(-4rpx);
+}
+
+.assignment-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 16rpx;
+}
+
+.assignment-title {
+  font-size: 30rpx;
+  font-weight: 600;
+  color: #333333;
+}
+
+.assignment-id {
+  font-size: 24rpx;
+  color: #8892b0;
+}
+
+.assignment-desc {
+  font-size: 26rpx;
+  color: #666666;
+  line-height: 1.6;
+  margin-bottom: 16rpx;
+}
+
+.assignment-footer {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.course-tag {
+  background: #e7f5ff;
+  color: #228be6;
+  font-size: 24rpx;
+  padding: 6rpx 16rpx;
+  border-radius: 20rpx;
+}
+
+.deadline {
+  font-size: 24rpx;
+  color: #ff6b6b;
+}
+
+/* 课程列表样式 */
+.course-list {
+  display: flex;
+  flex-direction: column;
+  gap: 24rpx;
+}
+
+.course-item {
+  background: #ffffff;
+  border-radius: 20rpx;
+  padding: 30rpx;
+  box-shadow: 0 4rpx 12rpx rgba(0, 0, 0, 0.05);
+  transition: all 0.3s ease;
+}
+
+.course-item-hover {
+  transform: scale(0.98);
+  background-color: #f8f9fa;
+}
+
+.course-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 20rpx;
+}
+
+.course-name {
+  font-size: 34rpx;
+  font-weight: 600;
+  color: #1a1a1a;
+}
+
+.course-id {
+  font-size: 24rpx;
+  color: #666666;
+  background: #f1f3f5;
+  padding: 6rpx 16rpx;
+  border-radius: 20rpx;
+}
+
+.course-description {
+  font-size: 28rpx;
+  color: #666666;
+  line-height: 1.6;
+  margin-bottom: 24rpx;
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 2;
+  overflow: hidden;
+}
+
+.teacher-info {
+  display: flex;
+  align-items: center;
+  padding-top: 20rpx;
+  border-top: 2rpx solid #f1f3f5;
+}
+
+.teacher-avatar {
+  width: 60rpx;
+  height: 60rpx;
+  border-radius: 30rpx;
+  margin-right: 16rpx;
+}
+
+.teacher-detail {
+  display: flex;
+  flex-direction: column;
+}
+
+.teacher-label {
+  font-size: 24rpx;
+  color: #8892b0;
+}
+
+.teacher-name {
+  font-size: 28rpx;
+  color: #228be6;
+  font-weight: 500;
+}
+
+/* 空状态样式 */
+.no-course-tip,
+.no-assignment {
+  text-align: center;
+  padding: 60rpx 0;
+  color: #8892b0;
+}
+
+.empty-image {
+  width: 240rpx;
+  height: 240rpx;
+  margin-bottom: 20rpx;
+}
+
+.sub-tip {
+  font-size: 26rpx;
+  color: #adb5bd;
+  margin-top: 10rpx;
+  display: block;
+}
+
+/* 链接样式 */
+.link {
+  font-size: 28rpx;
+  color: #228be6;
+  margin-bottom: 20rpx;
+  display: flex;
+  align-items: center;
+}
+
+.link text {
+  cursor: pointer;
+}
+
+.copy-tip {
+  color: #228be6;
+  margin-left: 10rpx;
+  animation: fadeOut 2s ease forwards;
+}
+
+@keyframes fadeOut {
+  from {
+    opacity: 1;
+  }
+  to {
+    opacity: 0;
+  }
+}    

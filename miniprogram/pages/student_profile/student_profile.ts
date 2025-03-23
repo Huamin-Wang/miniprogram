@@ -1,4 +1,5 @@
 const config = require('../../utils/config')
+
 // 定义 UserInfo 类型
 interface UserInfo {
   user_id: string;
@@ -16,10 +17,21 @@ interface Course {
   teacher?: string;
 }
 
+// 定义作业类型
+interface Assignment {
+  assignment_id: string;
+  course_id: string;
+  title: string;
+  description: string;
+  deadline: string;
+}
+
 // 定义 ResponseData 类型
 interface ResponseData {
   success: boolean;
   courses: Course[];
+  assignments: Assignment[];
+  assignments_to_do: Assignment[];
 }
 
 Page<{
@@ -28,13 +40,17 @@ Page<{
   user_role: string;
   openid: string;
   courses: Course[];
+  assignments_to_do: Assignment[];
+  assignments: Assignment[];
 }>({
   data: {
     user_id: '',
     user_name: '',
     user_role: '',
     openid: '',
-    courses: []
+    courses: [],
+    assignments_to_do: [],
+    assignments: []
   },
   onLoad(): void {
     const userData = wx.getStorageSync<UserInfo>('userInfo');
@@ -52,6 +68,7 @@ Page<{
       });
       if (user_role ==='student') {
         this.getStudentCourses();
+        this.getStudentAssignmentsData();
       }
     } else {
       console.log('未获取到用户数据');
@@ -79,6 +96,18 @@ Page<{
       }
     });
   },
+  copyUrl: function() {
+    wx.setClipboardData({
+      data: 'https://www.001ai.top',
+      success: function() {
+        wx.showToast({
+          title: '网址已复制',
+          icon: 'success',
+          duration: 2000
+        });
+      }
+    });
+  },
   goToCourseDetail(e: WechatMiniprogram.TouchEvent): void {
     const course_id = e.currentTarget.dataset.course_id as string;
     if (course_id) {
@@ -91,5 +120,25 @@ Page<{
     } else {
       console.error('课程 ID 为空，无法跳转');
     }
+  },
+  getStudentAssignmentsData() {
+    const { openid } = this.data;
+    wx.request<ResponseData>({
+      url: `${config.baseUrl}/getStudentAssignments?openid=${openid}`, // 替换为实际的后端接口地址
+      method: 'GET',
+      success: (res) => {
+        if (res.data) {
+          this.setData({
+            assignments_to_do: res.data.assignments_to_do,
+            assignments: res.data.assignments
+          });
+        } else {
+          console.log('获取数据失败:', res.data);
+        }
+      },
+      fail: (err) => {
+        console.log('请求失败:', err);
+      }
+    });
   }
-});
+});    
