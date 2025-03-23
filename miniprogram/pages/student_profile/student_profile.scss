@@ -4,6 +4,16 @@
   min-height: 100vh;
 }
 
+/* loading 状态样式 */
+.loading {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  font-size: 32rpx;
+  color: #333;
+}
+
 /* 顶部卡片样式 */
 .header-card {
   background: linear-gradient(135deg, #4c6ef5, #228be6);
@@ -25,6 +35,24 @@
   font-size: 28rpx;
   margin-top: 10rpx;
   display: block;
+}
+
+/* 菜单栏样式 */
+.assignment-menu {
+  display: flex;
+  justify-content: center;
+  margin-bottom: 20rpx;
+  border-bottom: 1rpx solid #e1e1e1;
+}
+.menu-item {
+  padding: 10rpx 20rpx;
+  font-size: 28rpx;
+  color: #666;
+  margin: 0 10rpx;
+}
+.menu-item.active {
+  color: #4c6ef5;
+  border-bottom: 2rpx solid #4c6ef5;
 }
 
 /* 区块标题样式 */
@@ -207,4 +235,11 @@
   color: #adb5bd;
   margin-top: 10rpx;
   display: block;
-}    
+}
+
+/* 链接样式 */
+.link {
+  font-size: 28rpx;
+  color: #228be6;
+  margin-bottom: 20rpx;
+}

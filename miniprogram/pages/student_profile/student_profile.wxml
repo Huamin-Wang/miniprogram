@@ -1,65 +1,88 @@
 <view class="container">
+  <!-- loading 状态 -->
+  <block wx:if="{{isLoading}}">
+    <view class="loading">
+      <text>加载中...</text>
+    </view>
+  </block>
+
+  <!-- 数据加载完毕后展示内容 -->
+  <block wx:else>
     <!-- 顶部卡片区域 -->
     <view class="header-card">
-        <view class="role-tip" wx:if="{{user_role === 'teacher'}}">
-            <text class="welcome-text">👨‍🏫 您是教师角色，欢迎进行课程管理</text>
-        </view>
-        <view class="role-tip" wx:if="{{user_role ==='student'}}">
-            <text class="welcome-text">👋 {{user_name}}同学，欢迎回来</text>
-            <text class="sub-text">今天也要努力学习哦</text>
-        </view>
+      <view class="role-tip" wx:if="{{user_role === 'teacher'}}">
+        <text class="welcome-text">👨‍🏫 您是教师角色，欢迎进行课程管理</text>
+      </view>
+      <view class="role-tip" wx:if="{{user_role === 'student'}}">
+        <text class="welcome-text">👋 {{user_name}}同学，欢迎回来</text>
+        <text class="sub-text">今天也要努力学习哦</text>
+      </view>
     </view>
 
-    <!-- 待完成作业区域 -->
-    <view class="section-title">待完成作业(请到电脑端提交作业)</view>
-    <view class="link">
-        网址（轻点复制）：
-        <text selectable bindtap="copyUrl">https://www.001ai.top</text>
+    <!-- 作业菜单栏 -->
+    <view class="assignment-menu">
+      <view class="menu-item {{selectedMenu === 'pending' ? 'active' : ''}}"
+            bindtap="selectMenu" data-menu="pending">
+        待完成作业
+      </view>
+      <view class="menu-item {{selectedMenu === 'all' ? 'active' : ''}}"
+            bindtap="selectMenu" data-menu="all">
+        所有作业
+      </view>
+    </view>
+
+    <!-- 作业列表区域 -->
+    <view class="section-title">
+      <text wx:if="{{selectedMenu === 'pending'}}">待完成作业(请到电脑端提交作业)</text>
+      <text wx:else>所有作业</text>
+    </view>
+    <view class="link" wx:if="{{selectedMenu === 'pending'}}">
+      网址（轻点复制）：<text selectable bindtap="copyUrl">https://www.001ai.top</text>
     </view>
     <view class="assignments-container">
-        <view class="assignment-card" wx:for="{{assignments_to_do}}" wx:key="assignment_id">
-            <view class="assignment-header">
-                <text class="assignment-title">{{item.title}}</text>
-                <text class="assignment-id">#{{item.assignment_id}}</text>
-            </view>
-            <text class="assignment-desc">{{item.description}}</text>
-            <view class="assignment-footer">
-                <view class="course-tag">{{item.course_id}}</view>
-                <text class="deadline">截止日期: {{item.deadline}}</text>
-            </view>
+      <view class="assignment-card" wx:for="{{selectedMenu === 'pending' ? assignments_to_do : assignments}}" wx:key="assignment_id">
+        <view class="assignment-header">
+          <text class="assignment-title">{{item.title}}</text>
+          <text class="assignment-id">#{{item.assignment_id}}</text>
         </view>
-        <view class="no-assignment" wx:if="{{!assignments_to_do.length}}">
-            <text>🎉 目前没有待完成的作业</text>
+        <text class="assignment-desc">{{item.description}}</text>
+        <view class="assignment-footer">
+          <view class="course-tag">{{item.course_id}}</view>
+          <text class="deadline">截止日期: {{item.deadline}}</text>
         </view>
+      </view>
+      <view class="no-assignment" wx:if="{{(selectedMenu === 'pending' && !assignments_to_do.length) || (selectedMenu === 'all' && !assignments.length)}}">
+        <text>🎉 当前暂无作业信息</text>
+      </view>
     </view>
 
-    <!-- 课程列表区域 -->
-    <view class="section-title">我的课程</view>
-    <view class="course-list" wx:if="{{user_role ==='student' && courses.length > 0}}">
-        <view class="course-item" 
-              wx:for="{{courses}}" 
-              wx:key="course_id" 
-              bindtap="goToCourseDetail" 
-              data-course_id="{{item.course_id}}"
-              hover-class="course-item-hover">
-            <view class="course-header">
-                <text class="course-name">{{item.course_name}}</text>
-                <text class="course-id">{{item.course_id}}</text>
-            </view>
-            <text class="course-description">{{item.description}}</text>
-            <view class="teacher-info">
-                <image class="teacher-avatar" src="/assets/teacher-avatar.png" mode="aspectFill"></image>
-                <view class="teacher-detail">
-                    <text class="teacher-label">授课教师</text>
-                    <text class="teacher-name">{{item.teacher}}</text>
-                </view>
-            </view>
+    <!-- 课程列表区域（仅学生展示） -->
+    <view class="section-title" wx:if="{{user_role === 'student'}}">我的课程</view>
+    <view class="course-list" wx:if="{{user_role === 'student' && courses.length > 0}}">
+      <view class="course-item" 
+            wx:for="{{courses}}" 
+            wx:key="course_id" 
+            bindtap="goToCourseDetail" 
+            data-course_id="{{item.course_id}}"
+            hover-class="course-item-hover">
+        <view class="course-header">
+          <text class="course-name">{{item.course_name}}</text>
+          <text class="course-id">{{item.course_id}}</text>
         </view>
+        <text class="course-description">{{item.description}}</text>
+        <view class="teacher-info">
+          <image class="teacher-avatar" src="/assets/teacher-avatar.png" mode="aspectFill"></image>
+          <view class="teacher-detail">
+            <text class="teacher-label">授课教师</text>
+            <text class="teacher-name">{{item.teacher}}</text>
+          </view>
+        </view>
+      </view>
     </view>
-
-    <view class="no-course-tip" wx:if="{{user_role ==='student' && courses.length === 0}}">
-        <image class="empty-image" src="/assets/empty-courses.png" mode="aspectFit"></image>
-        <text>暂无课程信息</text>
-        <text class="sub-tip">可以联系教师添加课程</text>
+    <view class="no-course-tip" wx:if="{{user_role === 'student' && courses.length === 0}}">
+      <image class="empty-image" src="/assets/empty-courses.png" mode="aspectFit"></image>
+      <text>暂无课程信息</text>
+      <text class="sub-tip">可以联系教师添加课程</text>
     </view>
-</view>    
+  </block>
+</view>
