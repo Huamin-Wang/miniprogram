@@ -11,18 +11,6 @@
   padding: 40rpx 30rpx;
   margin-bottom: 40rpx;
   box-shadow: 0 8rpx 16rpx rgba(76, 110, 245, 0.1);
-  animation: fadeInDown 0.5s ease;
-}
-
-@keyframes fadeInDown {
-  from {
-    opacity: 0;
-    transform: translateY(-20rpx);
-  }
-  to {
-    opacity: 1;
-    transform: translateY(0);
-  }
 }
 
 .welcome-text {
@@ -72,12 +60,6 @@
   padding: 24rpx;
   margin-bottom: 20rpx;
   box-shadow: 0 2rpx 8rpx rgba(0, 0, 0, 0.05);
-  transition: all 0.3s ease;
-}
-
-.assignment-card:hover {
-  box-shadow: 0 4rpx 16rpx rgba(0, 0, 0, 0.1);
-  transform: translateY(-4rpx);
 }
 
 .assignment-header {
@@ -225,32 +207,4 @@
   color: #adb5bd;
   margin-top: 10rpx;
   display: block;
-}
-
-/* 链接样式 */
-.link {
-  font-size: 28rpx;
-  color: #228be6;
-  margin-bottom: 20rpx;
-  display: flex;
-  align-items: center;
-}
-
-.link text {
-  cursor: pointer;
-}
-
-.copy-tip {
-  color: #228be6;
-  margin-left: 10rpx;
-  animation: fadeOut 2s ease forwards;
-}
-
-@keyframes fadeOut {
-  from {
-    opacity: 1;
-  }
-  to {
-    opacity: 0;
-  }
 }    
