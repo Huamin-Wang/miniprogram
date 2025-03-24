@@ -105,6 +105,9 @@
 }
 
 .tab {
+  position: relative;
+  display: flex;
+  align-items: center;
   flex: 1;
   text-align: center;
   padding: 20rpx 0;
@@ -129,7 +132,21 @@
 .tab.active .tab-text {
   color: #ffffff;
 }
-
+.badge {
+  position: absolute;
+  top: -6rpx;
+  right: -16rpx;
+  min-width: 32rpx;
+  height: 32rpx;
+  line-height: 32rpx;
+  text-align: center;
+  background-color: #ff4d4f;
+  color: white;
+  border-radius: 32rpx;
+  font-size: 22rpx;
+  padding: 0 6rpx;
+  box-sizing: border-box;
+}
 /* Section styles */
 .content-section {
   margin-bottom: 40rpx;

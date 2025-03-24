@@ -20,7 +20,17 @@ Page({
           password: e.detail.value
       });
   },
-
+copyUrl() {
+    wx.setClipboardData({
+        data: 'https://www.001ai.top',
+        success() {
+            wx.showToast({
+                title: '网址已复制',
+                icon: 'success'
+            });
+        }
+    });
+},
   // 在页面加载时尝试从本地存储的 userInfo 中获取 openid
   onLoad() {
       const userInfo = wx.getStorageSync('userInfo');

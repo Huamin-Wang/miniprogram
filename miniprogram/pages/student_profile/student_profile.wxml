@@ -2,7 +2,7 @@
                               <!-- Loading state -->
                               <block wx:if="{{isLoading}}">
                                 <view class="loading">
-                                  <image class="loading-icon" src="loading.GIF" mode="aspectFit"></image>
+                                  <image class="loading-icon" src="/assets/loading.GIF" mode="aspectFit"></image>
                                   <text>正在加载您的数据...</text>
                                 </view>
                               </block>
@@ -13,7 +13,7 @@
                                 <view class="header-card">
                                   <view class="header-content">
                                     <view class="user-info">
-                                      <image class="avatar" src="studentPicture.png" mode="aspectFill"></image>
+                                      <image class="avatar" src="/assets/studentPicture.png" mode="aspectFill"></image>
                                       <view class="user-details">
                                         <text class="welcome-text">{{user_name}}{{user_role === 'student' ? '同学' : '老师'}}</text>
                                         <text class="user-id">学号: {{user_identifier}}</text>
@@ -42,10 +42,13 @@
 
                                 <!-- Main content tabs -->
                                 <view class="main-tabs">
-                                  <view class="tab {{selectedMenu === 'pending' ? 'active' : ''}}"
-                                        bindtap="selectMenu" data-menu="pending">
-                                    <text class="tab-text">待完成作业</text>
-                                  </view>
+                              <view class="tab {{selectedMenu === 'pending' ? 'active' : ''}}"
+      bindtap="selectMenu" data-menu="pending">
+    <text class="tab-text">待完成作业</text>
+    <view wx:if="{{assignments_to_do.length > 0}}" class="badge">
+        {{assignments_to_do.length > 99 ? '99+' : assignments_to_do.length}}
+    </view>
+</view>
                                   <view class="tab {{selectedMenu === 'all' ? 'active' : ''}}"
                                         bindtap="selectMenu" data-menu="all">
                                     <text class="tab-text">所有作业</text>
@@ -116,7 +119,7 @@
                                           hover-class="course-item-hover">
                                       <view class="course-header">
                                         <text class="course-name">{{item.course_name}}</text>
-                                        <text class="course-id">{{item.course_id}}</text>
+
                                       </view>
                                       <text class="course-description">{{item.description || '暂无课程描述'}}</text>
                                       <view class="teacher-info">

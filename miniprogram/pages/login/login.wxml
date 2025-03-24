@@ -1,12 +1,10 @@
 <view class="container">
   <view class="title">绑定账号</view>
   <view class="subtitle">如无账号，请到网页端先注册</view>
-  <view class="link">
-    网址：
-    <a href="https://www.001ai.top" target="_blank">
-        <text selectable>https://www.001ai.top</text>
-    </a>
-</view>
+ <view class="link" bindtap="copyUrl">
+     点击复制网址：
+     <text selectable>https://www.001ai.top</text>
+ </view>
 
   <input class="input" placeholder="请输入学号/教工号" bindinput="onUsernameInput" />
   <input class="input" placeholder="请输入密码" password bindinput="onPasswordInput" />
