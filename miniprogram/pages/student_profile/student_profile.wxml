@@ -44,7 +44,7 @@
                                 <view class="main-tabs">
                               <view class="tab {{selectedMenu === 'pending' ? 'active' : ''}}"
       bindtap="selectMenu" data-menu="pending">
-    <text class="tab-text">待完成作业</text>
+    <text class="tab-text">待做作业</text>
     <view wx:if="{{assignments_to_do.length > 0}}" class="badge">
         {{assignments_to_do.length > 99 ? '99+' : assignments_to_do.length}}
     </view>
