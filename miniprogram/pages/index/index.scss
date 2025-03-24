@@ -1,8 +1,11 @@
 /* index.scss */
-  page {
-    background-color: #f0f2f5;
-    font-family: -apple-system, BlinkMacSystemFont, 'Helvetica Neue', Helvetica, 'PingFang SC', 'Microsoft YaHei', sans-serif;
-  }
+page {
+  background-color: #f0f2f5;
+  font-family: -apple-system, BlinkMacSystemFont, 'Helvetica Neue', Helvetica, 'PingFang SC', 'Microsoft YaHei', sans-serif;
+  margin: 0;
+  padding: 0;
+    background-color: #9dc558;
+}
 
   .container {
     display: flex;
@@ -12,16 +15,20 @@
   }
 
   /* Header */
-  .header {
-    background: linear-gradient(135deg, #54fc25, #096dd9);
-    color: white;
-    padding: 40rpx 30rpx;
-    text-align: center;
-    box-shadow: 0 4rpx 16rpx rgba(0, 0, 0, 0.15);
-    border-bottom-left-radius: 30rpx;
-    border-bottom-right-radius: 30rpx;
-    margin-bottom: 20rpx;
-  }
+.header {
+  background: linear-gradient(135deg, #54fc25, #096dd9);
+  color: white;
+  padding: 40rpx 30rpx;
+  text-align: center;
+  box-shadow: 0 4rpx 16rpx rgba(0, 0, 0, 0.15);
+  border-bottom-left-radius: 30rpx;
+  border-bottom-right-radius: 30rpx;
+  margin-bottom: 20rpx;
+  position: fixed; /* Make the header fixed */
+  top: 0; /* Position it at the top */
+  width: 100%; /* Ensure it spans the full width */
+  z-index: 1000; /* Ensure it is above other elements */
+}
 
   .title {
     font-size: 40rpx;
@@ -53,14 +60,19 @@
     align-items: center;
   }
 
-  .avatar-container {
-    width: 100rpx;
-    height: 100rpx;
+.avatar-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin: 10px 0;
+
+  .avatar {
+    width: 100px;
+    height: 100px;
     border-radius: 50%;
-    overflow: hidden;
-    margin-right: 20rpx;
-    box-shadow: 0 2rpx 8rpx rgba(0, 0, 0, 0.1);
+    object-fit: cover;
   }
+}
 
   .user-content {
     flex: 1;
@@ -197,7 +209,7 @@
   .feature-icon {
     width: 80rpx;
     height: 80rpx;
-    background-color: #f3f4f6;
+    background-color: #5882d8;
     border-radius: 12rpx;
     margin-bottom: 15rpx;
   }
@@ -265,3 +277,31 @@
   .button-hover {
     opacity: 0.9;
   }
+  .beta-tag {
+  font-size: 22rpx;
+  background-color: #ff9800;
+  color: white;
+  padding: 6rpx 12rpx;
+  border-radius: 10rpx;
+  margin-left: 10rpx;
+  font-weight: normal;
+}
+
+.feature-disabled {
+  opacity: 0.7;
+  position: relative;
+  pointer-events: none;
+}
+
+.coming-soon-overlay {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%) rotate(-15deg);
+  background-color: rgba(255, 152, 0, 0.8);
+  color: white;
+  padding: 6rpx 20rpx;
+  border-radius: 8rpx;
+  font-size: 24rpx;
+  font-weight: bold;
+}
