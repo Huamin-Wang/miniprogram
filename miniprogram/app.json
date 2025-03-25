@@ -5,7 +5,9 @@
     "pages/student_profile/student_profile",
     "pages/courseDetail/courseDetail",
     "pages/forum/forum",
-    "pages/post/post"
+    "pages/post/post",
+    "pages/Stu_info_edit/Stu_info_edit",
+    "pages/register/register"
   ],
   "window": {
     "navigationBarTitleText": "智能教学辅助系统",

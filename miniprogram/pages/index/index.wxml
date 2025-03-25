@@ -13,7 +13,7 @@
                 <block wx:if="{{user_id}}">
                   <view class="user-info">
                     <view class="avatar-container">
-                      <image class="avatar" src="/assets/studentPicture.png" mode="aspectFill"></image>
+                      <image class="avatar" src="/assets/studentPicture_boy.png" mode="aspectFill"></image>
                     </view>
                     <view class="user-content">
                      <text class="welcome">欢迎, {{user_name}} {{user_role === 'student' ? '同学' : (user_role === 'teacher' ? '老师' : '游客')}}!</text>
@@ -21,7 +21,8 @@
                         <button
                           class="btn-primary {{user_role === 'student' ? 'student' : 'teacher'}}"
                           bindtap="{{user_role === 'student' ? 'goToStudentProfile' : 'goToTeacherProfile'}}">
-                          {{user_role === 'student' ? '学生中心' : '教师中心'}}
+                          {{user_role === 'student' ? '学生中心' : (user_role=="teacher" ? "教师中心":" 点击退出->")}}
+                         
                         </button>
                         <button class="btn-secondary" bindtap="logout">退出</button>
                       </view>

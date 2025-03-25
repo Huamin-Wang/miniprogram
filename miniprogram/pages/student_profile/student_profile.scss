@@ -132,6 +132,16 @@
 .tab.active .tab-text {
   color: #ffffff;
 }
+.clickable-text {
+  color: #37ff00; /* Primary blue */
+  text-decoration: underline; /* Underline */
+  transition: color 0.3s ease, text-decoration 0.3s ease; /* Smooth transition */
+}
+
+.clickable-text:hover {
+  color: #0056b3; /* Darker blue on hover */
+  text-decoration: underline; /* Underline on hover */
+}
 .badge {
   position: absolute;
   top: -6rpx;

@@ -106,6 +106,11 @@ Page<{
       this.setData({ isLoading: false });
     }
   },
+    goToEditProfile: function() {
+    wx.navigateTo({
+      url: '/pages/Stu_info_edit/Stu_info_edit'
+    });
+  },
   getStudentCourses(callback?: Function): void {
     const { openid } = this.data;
     wx.request<ResponseData>({

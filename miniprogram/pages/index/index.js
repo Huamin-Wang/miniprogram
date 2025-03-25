@@ -8,6 +8,7 @@ Page({
     user_role: '',
     openid: "",
     user_identifier:"",
+    gender:"",
     features: [
       { title: '智能答疑', description: '基于大模型的实时问答系统，为学生提供24小时学习支持，快速解答各类学习疑问。' },
       { title: '个性化学习', description: '根据学生的学习进度和掌握情况，提供定制化的学习建议和资源推荐。' },
@@ -22,21 +23,17 @@ Page({
   onLoad() {
     // 检查是否有缓存的用户信息
     const userInfo = wx.getStorageSync('userInfo')
-    if (userInfo) {
+    if (userInfo&& (userInfo.user_id !== -1)) {
       this.setData({
         user_id: userInfo.user_id,
         user_name: userInfo.user_name,
         user_role: userInfo.user_role,
         openid: userInfo.openid,
         user_identifier:userInfo.user_identifier,
+        gender:userInfo.gender,
       })
+
     }
-    // 检查当前页面是否已收藏
-    const collectedPages = wx.getStorageSync('collectedPages') || [];
-    const currentPagePath = this.route;
-    this.setData({
-      isCollected: collectedPages.includes(currentPagePath)
-    });
   },
 
   getUserProfile() {
@@ -68,7 +65,8 @@ Page({
                     user_name: result.data.user_name,
                     user_role: result.data.user_role || 'student',// 默认为学生角色
                     openid: result.data.openid,
-                    user_identifier:result.data.user_identifier
+                    user_identifier:result.data.user_identifier,
+                    gender: result.data.gender
 
                   }
                   // 输出 userData 到控制台
@@ -81,6 +79,9 @@ Page({
                   console.log("本地存储的信息", userData);
                   // 判断 user_id 是否为 -1
                   if (userData.user_id === -1) {
+                     //将返回的openid存储到本地
+                    wx.setStorageSync('openid', result.data.openid);
+                    console.log("openid已经保存到本地", result.data.openid);
                     // 跳转到登录页面，这里假设登录页面路径为 /pages/login/login
                     wx.navigateTo({
                       url: '/pages/login/login'
@@ -92,6 +93,7 @@ Page({
                     title: '登录成功'
                   })
                 } else {
+
                   wx.showToast({
                     title: '登录失败',
                     icon: 'none'
@@ -100,7 +102,7 @@ Page({
               },
               fail: () => {
                 wx.showToast({
-                  title: '网络错误',
+                  title: '网络错误或者服务器异常',
                   icon: 'none'
                 })
               }

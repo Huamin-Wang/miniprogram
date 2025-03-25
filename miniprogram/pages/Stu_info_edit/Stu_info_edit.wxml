@@ -1,0 +1,41 @@
+<view class="container">
+  <view class="title">用户注册</view>
+  <view class="form">
+    <view class="form-item">
+      <text class="label">学号/教工号</text>
+      <input class="input" placeholder="请输入学号/教工号" bindinput="onIdentifierInput" />
+    </view>
+    <view class="form-item">
+      <text class="label">身份</text>
+     <picker mode="selector" range="{{roles}}" bindchange="onRoleChange">
+        <view class="picker">{{role}}</view>
+      </picker>
+    </view>
+    <view class="form-item">
+      <text class="label">姓名</text>
+      <input class="input" placeholder="请输入姓名" bindinput="onNameInput" />
+    </view>
+    <view class="form-item">
+      <text class="label">性别</text>
+      <picker mode="selector" range="{{genders}}" bindchange="onGenderChange">
+        <view class="picker">{{gender}}</view>
+      </picker>
+    </view>
+    <view class="form-item">
+      <text class="label">邮箱</text>
+      <input class="input" placeholder="请输入邮箱" bindinput="onEmailInput" />
+    </view>
+    <view class="form-item">
+      <text class="label">密码</text>
+      <input class="input" placeholder="请输入密码" password bindinput="onPasswordInput" />
+    </view>
+    <view class="form-item">
+      <text class="label">确认密码</text>
+      <input class="input" placeholder="请输入确认密码" password bindinput="onConfirmPasswordInput" />
+    </view>
+    <button class="save-btn" bindtap="onRegister">注册</button>
+  </view>
+  <view class="text-center mt-3">
+    <navigator url="/" class="btn-primary">返回首页</navigator>
+  </view>
+</view>

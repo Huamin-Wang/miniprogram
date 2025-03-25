@@ -13,9 +13,9 @@
                                 <view class="header-card">
                                   <view class="header-content">
                                     <view class="user-info">
-                                      <image class="avatar" src="/assets/studentPicture.png" mode="aspectFill"></image>
+                                      <image class="avatar" src="/assets/studentPicture_boy.png" mode="aspectFill"></image>
                                       <view class="user-details">
-                                        <text class="welcome-text">{{user_name}}{{user_role === 'student' ? '同学' : '老师'}}</text>
+                                     <text class="welcome-text clickable-text" bindtap="goToEditProfile">{{user_name}}{{user_role === 'student' ? '同学' : '老师'}}</text>
                                         <text class="user-id">学号: {{user_identifier}}</text>
                                       </view>
                                     </view>
