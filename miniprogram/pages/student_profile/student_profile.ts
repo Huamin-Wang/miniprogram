@@ -51,6 +51,7 @@ Page<{
   user_name: string;
   user_role: string;
   openid: string;
+  gender: string;
   courses: Course[];
   assignments_to_do: Assignment[];
   assignments: Assignment[];
@@ -64,6 +65,7 @@ Page<{
     user_name: '',
     user_role: '',
     openid: '',
+    gender:"",
     courses: [],
     assignments_to_do: [],
     assignments: [],
@@ -73,7 +75,7 @@ Page<{
   onLoad(): void {
     const userData = wx.getStorageSync<UserInfo>('userInfo');
     if (userData) {
-      const { user_id, user_name, user_role, openid, user_identifier } = userData;
+      const { user_id, user_name, user_role, openid, user_identifier,gender } = userData;
       console.log('接收到的用户ID:', user_id);
       console.log('接收到的用户名:', user_name);
       console.log('接收到的用户角色:', user_role);
@@ -83,7 +85,8 @@ Page<{
         user_name,
         user_role,
         openid,
-        user_identifier
+        user_identifier,
+        gender
       });
       if (user_role === 'student') {
         // 并行请求课程和作业数据

@@ -1,78 +1,165 @@
 // pages/Stu_info_edit/Stu_info_edit.ts
-Page({
-data: {
-    roles: ["学生", "教师"],
-    roleValues: ["student", "teacher"],
-    role: "",
-    genders: ["男", "女"],
-    genderValues: ["male","female"],
-    gender: "",
-  },
+  const config = require('../../utils/config')
 
+  Page({
+    data: {
+      roles: ["学生", "教师"],
+      roleValues: ["student", "teacher"],
+      role: "",
+      genders: ["男", "女"],
+      genderValues: ["男", "女"],
+      gender: "",
+      current_userInfo: {
+        user_identifier: "",
+        user_role: "",
+        user_name: "",
+        gender: "",
+        email: "",
+        password: "",
+        openid: "",
+      }
+    },
 
+    onLoad() {
+      const userInfo = wx.getStorageSync('userInfo');
+      if (userInfo) {
+        this.setData({
+          role: userInfo.user_role || '',
+          gender: userInfo.gender || '',
+          current_userInfo: {
+            user_identifier: userInfo.user_identifier || '',
+            user_role: userInfo.user_role || '',
+            user_name: userInfo.user_name || '',
+            gender: userInfo.gender || '',
+            email: userInfo.email || '',
+            password: userInfo.password || '',
+            openid: userInfo.openid || ''
+          }
+        });
+      }
+    },
 
-  /**
-   * 生命周期函数--监听页面加载
-   */
-  onLoad() {
+    onReady() {},
+    onShow() {},
+    onHide() {},
+    onUnload() {},
+    onPullDownRefresh() {},
+    onReachBottom() {},
+    onShareAppMessage() {},
 
-  },
+    onRoleChange(e) {
+      this.setData({
+        role: this.data.roles[e.detail.value],
+        'current_userInfo.user_role': this.data.roleValues[e.detail.value]
+      });
+    },
 
-  /**
-   * 生命周期函数--监听页面初次渲染完成
-   */
-  onReady() {
+    onGenderChange(e) {
+      this.setData({
+        gender: this.data.genders[e.detail.value],
+        'current_userInfo.gender': this.data.genderValues[e.detail.value]
+      });
+    },
 
-  },
+    onIdentifierInput(e) {
+      this.setData({
+        'current_userInfo.user_identifier': e.detail.value
+      });
+    },
 
-  /**
-   * 生命周期函数--监听页面显示
-   */
-  onShow() {
+    onPasswordInput(e) {
+      this.setData({
+        'current_userInfo.password': e.detail.value
+      });
+    },
 
-  },
+    onConfirmPasswordInput(e) {
+      if (this.data.current_userInfo.password !== e.detail.value) {
+        wx.showToast({
+          title: '两次输入的密码不一致',
+          icon: 'none'
+        });
+        return;
+      }
+    },
 
-  /**
-   * 生命周期函数--监听页面隐藏
-   */
-  onHide() {
+    onNameInput(e) {
+      this.setData({
+        'current_userInfo.user_name': e.detail.value
+      });
+    },
 
-  },
+    onEmailInput(e) {
+      this.setData({
+        'current_userInfo.email': e.detail.value
+      });
+    },
 
-  /**
-   * 生命周期函数--监听页面卸载
-   */
-  onUnload() {
+    onEdit() {
+      const { user_identifier, user_role, user_name, gender, email, password, openid } = this.data.current_userInfo;
+       //验证学号/教工号、密码、姓名、角色、性别和邮箱是否为空
+    if (!user_identifier || !password || !user_name || !user_role || !gender || !email) {
+        wx.showToast({
+            title: '所有字段均不能为空',
+            icon: 'none'
+        });
+        return;
+    }
+      if (!openid) {
+        wx.showToast({
+          title: '未获取到 openid，请重新进入页面',
+          icon: 'none'
+        });
+        return;
+      }
 
-  },
+      wx.request({
+        url: `${config.baseUrl}/miniEdit`,
+        method: 'POST',
+        header: {
+          'Content-Type': 'application/json'
+        },
+        data: {
+          user_identifier,
+          password,
+          openid,
+          user_name,
+          user_role,
+          gender,
+          email
+        },
+        success: (res) => {
+          if (res.data.success) {
+            wx.showToast({
+              title: '修改成功',
+              icon: 'success'
+            });
 
-  /**
-   * 页面相关事件处理函数--监听用户下拉动作
-   */
-  onPullDownRefresh() {
+            wx.setStorageSync('userInfo', {
+              ...wx.getStorageSync('userInfo'),
+              user_name: res.data.user_name,
+              user_role: res.data.user_role,
+              user_identifier: res.data.user_identifier,
+              gender: res.data.gender,
+              email: res.data.email
+            });
 
-  },
-
-  /**
-   * 页面上拉触底事件的处理函数
-   */
-  onReachBottom() {
-
-  },
- onRoleChange: function(e) {
-    this.setData({
-      role: this.data.roleValues[e.detail.value]
-    });
-  },
-onGenderChange: function(e) {
-  this.setData({
-    gender: this.data.genderValues[e.detail.value]
-  });
-},
-  /**
-   * 用户点击右上角分享
-   */
-  onShareAppMessage() {
-
-  }
-})
+            wx.navigateTo({
+              url: '/pages/index/index'
+            });
+          } else {
+            wx.showToast({
+              title: '修改失败，请检查信息或联系管理员',
+              icon: 'none'
+            });
+          }
+        },
+        fail: () => {
+          wx.showToast({
+            title: '网络错误',
+            icon: 'none'
+          });
+        }
+      });
+    }
+  })

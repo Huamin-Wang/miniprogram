@@ -9,6 +9,7 @@ Page({
     openid: "",
     user_identifier:"",
     gender:"",
+    email:"",
     features: [
       { title: '智能答疑', description: '基于大模型的实时问答系统，为学生提供24小时学习支持，快速解答各类学习疑问。' },
       { title: '个性化学习', description: '根据学生的学习进度和掌握情况，提供定制化的学习建议和资源推荐。' },
@@ -31,11 +32,17 @@ Page({
         openid: userInfo.openid,
         user_identifier:userInfo.user_identifier,
         gender:userInfo.gender,
+        email:userInfo.email,
       })
 
     }
   },
-
+//切换页面时
+    onShow() {
+        // 检查是否有缓存的用户信息
+        const userInfo = wx.getStorageSync('userInfo')
+        console.log("切换页面后userInfo：",userInfo);
+    },
   getUserProfile() {
     wx.getUserProfile({
       desc: '用于完善用户资料',
@@ -66,7 +73,8 @@ Page({
                     user_role: result.data.user_role || 'student',// 默认为学生角色
                     openid: result.data.openid,
                     user_identifier:result.data.user_identifier,
-                    gender: result.data.gender
+                    gender: result.data.gender,
+                    email: result.data.email,
 
                   }
                   // 输出 userData 到控制台
@@ -123,10 +131,13 @@ Page({
     // 清除用户信息
     this.setData({
       user_id: null,
-      user_name: '',
-      user_role: '',
-      openid: "",
-      user_identifier:''
+    user_name: '',
+    user_role: '',
+    openid: "",
+    user_identifier:"",
+    gender:"",
+    email:"",
+
     })
     // 清除存储
     wx.removeStorageSync('userInfo')

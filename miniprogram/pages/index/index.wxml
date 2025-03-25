@@ -13,7 +13,7 @@
                 <block wx:if="{{user_id}}">
                   <view class="user-info">
                     <view class="avatar-container">
-                      <image class="avatar" src="/assets/studentPicture_boy.png" mode="aspectFill"></image>
+                      <image class="avatar" src="{{gender === '男' ? '/assets/studentPicture_boy.png' : '/assets/studentPicture_girl.png'}}" mode="aspectFill"></image>
                     </view>
                     <view class="user-content">
                      <text class="welcome">欢迎, {{user_name}} {{user_role === 'student' ? '同学' : (user_role === 'teacher' ? '老师' : '游客')}}!</text>

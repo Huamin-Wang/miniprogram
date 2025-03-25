@@ -149,14 +149,14 @@ onRegister: function() {
      const openid = wx.getStorageSync('openid');
      this.data.openid = openid;
 
-    // 验证学号/教工号、密码、姓名、角色、性别和邮箱是否为空
-    // if (!user_identifier || !password || !user_name || !user_role || !gender || !email) {
-    //     wx.showToast({
-    //         title: '所有字段均不能为空111',
-    //         icon: 'none'
-    //     });
-    //     return;
-    // }
+    //验证学号/教工号、密码、姓名、角色、性别和邮箱是否为空
+    if (!user_identifier || !password || !user_name || !user_role || !gender || !email) {
+        wx.showToast({
+            title: '所有字段均不能为空',
+            icon: 'none'
+        });
+        return;
+    }
 
     // 验证 openid 是否存在
     if (!openid) {

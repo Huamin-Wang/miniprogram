@@ -1,75 +1,68 @@
-/* pages/Stu_info_edit/Stu_info_edit.wxss */
-
-.container {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
+.form-container {
   padding: 20px;
-}
-
-.title {
-  font-size: 24px;
-  font-weight: bold;
-  margin-bottom: 20px;
-}
-
-.form {
-  width: 100%;
-  max-width: 400px;
+  background: #fff;
+  border-radius: 12px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
 }
 
 .form-item {
-  margin-bottom: 15px;
+  margin-bottom: 24px;
+  position: relative;
 }
 
 .label {
   display: block;
-  margin-bottom: 5px;
-  font-size: 16px;
+  font-size: 14px;
+  color: #333;
+  margin-bottom: 8px;
+  font-weight: 500;
 }
 
 .input {
   width: 100%;
-  padding: 10px;
-  border: 1px solid #ccc;
-  border-radius: 4px;
+  height: 44px;
+  padding: 0 12px;
+  font-size: 14px;
+  background: #f5f7fa;
+  border-radius: 8px;
+  border: 1px solid #e4e7ed;
+}
+
+.input-border {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  height: 2px;
+  background: linear-gradient(to right, #4a90e2, #67c23a);
+  transform: scaleX(0);
+  transition: transform 0.3s;
+}
+
+.input:focus + .input-border {
+  transform: scaleX(1);
+}
+
+.picker-wrapper {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  height: 44px;
+  padding: 0 12px;
+  background: #f5f7fa;
+  border-radius: 8px;
+  border: 1px solid #e4e7ed;
 }
 
 .picker {
-  width: 100%;
-  padding: 10px;
-  border: 1px solid #ccc;
-  border-radius: 4px;
-  background-color: #fff;
+  font-size: 14px;
+  color: #333;
 }
 
-.save-btn {
-  width: 100%;
-  padding: 10px;
-  background-color: #007bff;
-  color: #fff;
-  border: none;
-  border-radius: 4px;
-  cursor: pointer;
-}
-
-.save-btn:hover {
-  background-color: #0056b3;
-}
-
-.text-center {
-  text-align: center;
-}
-
-.mt-3 {
-  margin-top: 1rem;
-}
-
-.btn-primary {
-  color: #007bff;
-  text-decoration: none;
-}
-
-.btn-primary:hover {
-  text-decoration: underline;
+.picker-arrow {
+  width: 0;
+  height: 0;
+  border-left: 5px solid transparent;
+  border-right: 5px solid transparent;
+  border-top: 5px solid #666;
 }
