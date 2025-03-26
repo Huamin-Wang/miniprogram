@@ -1,5 +1,4 @@
 // pages/register/register.ts
-// pages/Stu_info_edit/Stu_info_edit.ts
 const config = require('../../utils/config')
 Page({
   data: {
@@ -9,6 +8,8 @@ Page({
       genders: ["男", "女"],
       genderValues: ["男","女"],
       gender: "",
+      isConfirmPasswordValid: true,
+      confirmPassword: "",
       current_userInfo: {
           user_identifier: "",
           user_role: "",
@@ -116,16 +117,8 @@ Page({
     //处理确认密码输入事件
     onConfirmPasswordInput(e) {
         this.setData({
-            'current_userInfo.confirm_password': e.detail.value
+            confirmPassword: e.detail.value
         });
-    // 检查密码是否一致
-        if (this.data.current_userInfo.password !== e.detail.value) {
-            wx.showToast({
-                title: '两次输入的密码不一致',
-                icon: 'none'
-            });
-            return;
-        }
     },
     // 处理姓名输入事件
     onNameInput(e) {
@@ -152,15 +145,24 @@ Page({
         });
     },
 
-
+    //检查密码是否一致
+      ConfirmPasswordValid() {
+        if (this.data.current_userInfo.password !== this.data.confirmPassword) {
+            wx.showToast({
+                title: '两次输入的密码不一致',
+                icon: 'none',
+                duration: 3000
+            });
+            this.data.isConfirmPasswordValid = false;
+            return;
+        }
+        this.data.isConfirmPasswordValid = true;
+    },
 
 onRegister: function() {
-    const { user_identifier, user_role, user_name, gender, email, password } = this.data.current_userInfo;
-   //从本地获取openid
-     const openid = wx.getStorageSync('openid');
-     this.data.openid = openid;
 
-    //验证学号/教工号、密码、姓名、角色、性别和邮箱是否为空
+    const { user_identifier, user_role, user_name, gender, email, password } = this.data.current_userInfo;
+     //验证学号/教工号、密码、姓名、角色、性别和邮箱是否为空
     if (!user_identifier || !password || !user_name || !user_role || !gender || !email) {
         wx.showToast({
             title: '所有字段均不能为空',
@@ -168,6 +170,17 @@ onRegister: function() {
         });
         return;
     }
+
+      //验证两次输入的密码是否一致，不一致则不提交
+        this.ConfirmPasswordValid()
+        if (!this.data.isConfirmPasswordValid) {
+            return;
+        }
+   //从本地获取openid
+     const openid = wx.getStorageSync('openid');
+     this.data.openid = openid;
+
+
 
     // 验证 openid 是否存在
     if (!openid) {
