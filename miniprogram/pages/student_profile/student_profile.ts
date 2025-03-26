@@ -7,6 +7,7 @@ interface UserInfo {
   user_role: string;
   openid: string;
   user_identifier: string;
+  gender: string;
 }
 
 // 定义 Course 类型
