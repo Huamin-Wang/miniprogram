@@ -8,39 +8,43 @@
             </view>
 
             <!-- User Section and Notification Bar -->
-            <view class="user-section">
-              <view class="login-status">
-                <block wx:if="{{user_id}}">
-                  <view class="user-info">
-                    <view class="avatar-container">
-                      <image class="avatar" src="{{gender === '男' ? '/assets/studentPicture_boy.png' : '/assets/studentPicture_girl.png'}}" mode="aspectFill"></image>
-                    </view>
-                    <view class="user-content">
-                     <text class="welcome">欢迎, {{user_name}} {{user_role === 'student' ? '同学!' : (user_role === 'teacher' ? '老师!' : '')}}</text>
-                      <view class="button-group">
+          <view class="user-section">
+            <view class="login-status">
+              <block wx:if="{{user_id}}">
+                <view class="user-info">
+                  <view class="avatar-container">
+                    <image class="avatar" src="{{gender === '男' ? '/assets/studentPicture_boy.png' : '/assets/studentPicture_girl.png'}}" mode="aspectFill"></image>
+                  </view>
+                  <view class="user-content">
+                    <text class="welcome">欢迎您, {{user_name}} {{user_role === 'student' ? '同学!' : (user_role === 'teacher' ? '老师!' : '')}}</text>
+                    <view class="button-group">
                       <button
-                       class="btn-primary {{user_role === 'student' ? 'student' : 'teacher'}}"
-                       bindtap="{{user_role === 'student' ? 'goToStudentProfile' : 'goToTeacherProfile'}}">
-                       {{user_role === 'student' ? '学生中心' : (user_role === 'teacher' ? '教师中心' : '点击退出->')}}
+                        class="btn-primary {{user_role === 'student' ? 'student' : (user_role === 'teacher' ? 'teacher' : 'default')}}"
+                        bindtap="{{user_role === 'student' ? 'goToStudentProfile' : (user_role === 'teacher' ? 'goToTeacherProfile' : 'logout')}}"
+                        wx:if="{{user_role === 'student' || user_role === 'teacher'}}">
+                        {{user_role === 'student' ? '学生中心' : (user_role === 'teacher' ? '教师中心' : '个人中心')}}
                       </button>
-                        <button class="btn-secondary" bindtap="logout">退出</button>
-                      </view>
+                      <button class="btn-secondary" bindtap="logout">退出登录</button>
                     </view>
                   </view>
-                </block>
-                <block wx:else>
-                  <view class="login-prompt">
-                    <text class="motto">当下的努力，换来的是明天更好的自己！</text>
+                </view>
+              </block>
+              <block wx:else>
+                <view class="login-prompt">
+                  <text class="motto">当下的努力，换来的是明天更好的自己！</text>
+                  <view class="login-options">
                     <button class="btn-primary" bindtap="getUserProfile">微信一键登录</button>
+                    <navigator url="/pages/login/login" class="btn-secondary account-login">账号密码登录</navigator>
                   </view>
-                </block>
-              </view>
-              <view class="notification-bar" bindtap="goToForum">
-                <text class="notification-icon">📢</text>
-                <text class="notification-text">查看最新通知信息</text>
-                <text class="notification-arrow">→</text>
-              </view>
+                </view>
+              </block>
             </view>
+            <view class="notification-bar" bindtap="goToForum">
+              <text class="notification-icon">📢</text>
+              <text class="notification-text">查看最新通知信息</text>
+              <text class="notification-arrow">→</text>
+            </view>
+          </view>
 
         <!-- Feature Grid (Coming Soon) -->
         <view class="section-title">功能导航 <text class="beta-tag">即将上线</text></view>
