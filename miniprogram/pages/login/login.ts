@@ -95,6 +95,7 @@ copyUrl() {
                       gender:res.data.gender,
                       email: res.data.email,
                   });
+                  console.log('本地用户信息:', wx.getStorageSync('userInfo'));
                   // 登录成功后进行页面跳转
                   wx.navigateTo({
                       url: `/pages/index/index`
