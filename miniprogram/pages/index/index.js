@@ -128,6 +128,32 @@ Page({
   },
 
   logout() {
+    //解绑用户的openid
+   wx.request({
+     url: `${config.baseUrl}/unbindOpenId`,  // 使用 config.baseUrl
+     method: 'POST',
+     header: {
+       'Content-Type': 'application/json' // 设置请求头为 JSON 格式
+     },
+     data: {
+       openid: this.data.openid,
+     },
+     success: (result) => {
+       if (result.data.success) {
+         console.log("解绑成功");
+       } else {
+         console.log("解绑失败");
+       }
+     },
+     fail: () => {
+       wx.showToast({
+         title: '网络错误或者服务器异常',
+         icon: 'none'
+       })
+     }
+   })
+
+
     // 清除用户信息
     this.setData({
       user_id: null,
@@ -144,7 +170,9 @@ Page({
     wx.showToast({
       title: '已退出登录'
     })
+
   },
+
 
  goToForum: function() {
   wx.navigateTo({
@@ -158,9 +186,11 @@ Page({
   },
 
   goToTeacherProfile() {
-    wx.navigateTo({
-      url: '/pages/teacher_profile/teacher_profile'
-    })
+    console.log("Before navigation attempt");
+wx.navigateTo({
+  url: '/pages/teacher_profile/teacher_profile'
+});
+console.log("After navigation attempt");
   },
 
   // 分享给好友

@@ -54,6 +54,6 @@
           </checkbox-group>
         </view>
       </view>
-      <button class="save-btn" bindtap="onRegister" disabled="{{!privacyAgreed}}">注册</button>
+      <button class="save-btn" bindtap="onRegister" disabled="{{!privacyAgreed || !isConfirmPasswordValid}}">注册</button>
   </view>
 </view>
