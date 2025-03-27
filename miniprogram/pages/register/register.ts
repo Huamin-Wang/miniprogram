@@ -107,6 +107,12 @@ Page({
         this.setData({
             'current_userInfo.user_identifier': e.detail.value
         });
+         //提示要确保学号/教工号与教务系统一致
+        wx.showToast({
+            title: '请确保学号/教工号与教务系统一致',
+            icon: 'none',
+            duration: 3000
+        });
     },
     // 处理密码输入事件
     onPasswordInput(e) {
@@ -124,6 +130,12 @@ Page({
     onNameInput(e) {
         this.setData({
             'current_userInfo.user_name': e.detail.value
+        });
+        //提示要确保姓名与教务系统一致
+        wx.showToast({
+            title: '请确保姓名与教务系统一致',
+            icon: 'none',
+            duration: 3000
         });
     },
     // 处理邮箱输入事件

@@ -37,6 +37,34 @@ Page({
 
     }
   },
+  unbindOpenId(){
+    console.log("index.js解绑方法获取的openid:",wx.getStorageSync('openid'))
+    //解绑用户的openid
+    wx.request({
+      url: `${config.baseUrl}/unbindOpenId`,  // 使用 config.baseUrl
+      method: 'POST',
+      header: {
+        'Content-Type': 'application/json' // 设置请求头为 JSON 格式
+      },
+      data: {
+        openid: wx.getStorageSync('openid'),
+      },
+      success: (result) => {
+        if (result.data.success) {
+          console.log("解绑成功");
+        } else {
+          console.log("解绑失败");
+        }
+      },
+      fail: () => {
+        wx.showToast({
+          title: '网络错误或者服务器异常',
+          icon: 'none'
+        })
+      }
+    })
+    
+     },
 //切换页面时
     onShow() {
         // 检查是否有缓存的用户信息
@@ -126,34 +154,11 @@ Page({
       }
     })
   },
-
+ 
   logout() {
-    //解绑用户的openid
-   wx.request({
-     url: `${config.baseUrl}/unbindOpenId`,  // 使用 config.baseUrl
-     method: 'POST',
-     header: {
-       'Content-Type': 'application/json' // 设置请求头为 JSON 格式
-     },
-     data: {
-       openid: this.data.openid,
-     },
-     success: (result) => {
-       if (result.data.success) {
-         console.log("解绑成功");
-       } else {
-         console.log("解绑失败");
-       }
-     },
-     fail: () => {
-       wx.showToast({
-         title: '网络错误或者服务器异常',
-         icon: 'none'
-       })
-     }
-   })
-
-
+    //保存openid到本地存储先
+     // 保存到本地存储
+     wx.setStorageSync('openid', this.data.openid);
     // 清除用户信息
     this.setData({
       user_id: null,

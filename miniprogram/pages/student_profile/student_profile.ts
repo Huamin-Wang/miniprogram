@@ -7,6 +7,7 @@ interface UserInfo {
   user_role: string;
   openid: string;
   user_identifier: string;
+  gender: string;
 }
 
 // 定义 Course 类型
@@ -72,6 +73,8 @@ Page<{
     isLoading: true,
     selectedMenu: 'pending' // 默认显示待完成作业
   },
+
+
   onLoad(): void {
     const userData = wx.getStorageSync<UserInfo>('userInfo');
     if (userData) {

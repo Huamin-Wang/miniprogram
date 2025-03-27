@@ -74,6 +74,7 @@ Page({
         this.setData({
             'current_userInfo.user_identifier': e.detail.value
         });
+
     },
 
     onPasswordInput(e) {
@@ -104,6 +105,7 @@ Page({
         this.setData({
             'current_userInfo.user_name': e.detail.value
         });
+
     },
 
     onEmailInput(e) {
