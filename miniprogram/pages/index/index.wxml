@@ -47,16 +47,19 @@
           </view>
 
         <!-- Feature Grid (Coming Soon) -->
-        <view class="section-title">功能导航 <text class="beta-tag">即将上线</text></view>
+        <view class="section-title">特色功能介绍 <text class="beta-tag">部分已上线</text></view>
         <view class="feature-grid">
           <view
-            class="feature-card feature-disabled"
+            class="feature-card"
             wx:for="{{features}}"
-            wx:key="title">
-            <view class="feature-icon">📊</view>
+            wx:key="title"
+            data-feature="{{item}}"
+            bindtap="goToFeature">
+            <view class="feature-icon">
+              <text>{{item.icon || '📊'}}</text>
+            </view>
             <text class="feature-title">{{item.title}}</text>
             <text class="feature-desc">{{item.description}}</text>
-            <view class="coming-soon-overlay">即将上线</view>
           </view>
         </view>
 
