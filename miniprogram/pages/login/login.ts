@@ -37,11 +37,11 @@ copyUrl() {
 },
   // 在页面加载时尝试从本地存储的 userInfo 中获取 openid
   onLoad() {
-      const userInfo = wx.getStorageSync('userInfo');
-      console.log("账号绑定页面onload获取的openid：",userInfo.openid)
-      if (userInfo && userInfo.openid) {
+      const openid = wx.getStorageSync('openid');
+      console.log("账号绑定页面onload获取的openid：",openid)
+      if (openid) {
           this.setData({
-              openid: userInfo.openid
+              openid: wx.getStorageSync('openid')
           });
       }
   },
@@ -94,6 +94,7 @@ copyUrl() {
                       user_identifier:res.data.user_identifier,
                       gender:res.data.gender,
                       email: res.data.email,
+                      openid: wx.getStorageSync('openid')
                   });
                   console.log('本地用户信息:', wx.getStorageSync('userInfo'));
                   // 登录成功后进行页面跳转

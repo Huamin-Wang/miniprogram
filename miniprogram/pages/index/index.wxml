@@ -34,7 +34,7 @@
                   <text class="motto">当下的努力，换来的是明天更好的自己！</text>
                   <view class="login-options">
                     <button class="btn-primary" bindtap="getUserProfile">微信一键登录</button>
-                    <navigator url="/pages/login/login" class="btn-secondary account-login">账号密码登录</navigator>
+                    <navigator url="/pages/login/login" class="btn-secondary account-login" bind:tap="unbindOpenId">切换账号登录</navigator>
                   </view>
                 </view>
               </block>
