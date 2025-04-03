@@ -78,7 +78,7 @@
                                   </view>
 
                                   <view class="assignments-list">
-                                    <view class="assignment-card" wx:for="{{selectedMenu === 'pending' ? assignments_to_do : assignments}}" wx:key="assignment_id">
+                                    <view class="assignment-card" wx:for="{{selectedMenu === 'pending' ? assignments_to_do : assignments}}" wx:key="assignment_id" bindtap="goToAssignmentDetail" data-assignment_id="{{item.assignment_id}}">
                                       <view class="assignment-header">
                                         <text class="assignment-title">{{item.title}}</text>
                                         <!-- <text class="assignment-id">#{{item.assignment_id}}</text> -->
@@ -86,7 +86,7 @@
                                       <text class="assignment-desc">{{item.description}}</text>
                                       <view class="assignment-footer">
                                         <view class="course-tag">
-                                          <block wx:for="{{courses}}" wx:for-item="course" wx:key="course_id">
+                                          <block wx:for="{{courses}}" wx:for-item="course" wx:key="course_id" >
                                             <block wx:if="{{course.course_id === item.course_id}}">
                                               {{course.course_name}}
                                             </block>

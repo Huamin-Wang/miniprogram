@@ -8,7 +8,8 @@
     "pages/post/post",
     "pages/Stu_info_edit/Stu_info_edit",
     "pages/register/register",
-    "pages/teacher_profile/teacher_profile"
+    "pages/teacher_profile/teacher_profile",
+    "pages/assignmentDetail/assignmentDetail"
   ],
   "window": {
     "navigationBarTitleText": "智能教学辅助系统",
