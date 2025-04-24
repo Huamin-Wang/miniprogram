@@ -9,7 +9,8 @@
     "pages/Stu_info_edit/Stu_info_edit",
     "pages/register/register",
     "pages/teacher_profile/teacher_profile",
-    "pages/assignmentDetail/assignmentDetail"
+    "pages/assignmentDetail/assignmentDetail",
+    "pages/attendance/attendance"
   ],
   "window": {
     "navigationBarTitleText": "智能教学辅助系统",
