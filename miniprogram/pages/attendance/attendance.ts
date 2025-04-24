@@ -56,7 +56,14 @@ Page({
   onReachBottom() {
 
   },
-
+/**
+ * 返回首页
+ */
+returnToHome() {
+  wx.switchTab({
+    url: '/pages/index/index' // 确保路径正确
+  });
+},
   /**
    * 用户点击右上角分享
    */

@@ -29,7 +29,7 @@
 
     <view class="btn-area">
       <button class="primary-btn" bindtap="returnToCourse">返回课程</button>
-      <button class="secondary-btn" bindtap="returnToHome">返回首页</button>
+      <button class="primary-btn" bindtap="returnToHome">返回教学助手首页</button>
     </view>
   </view>
 </view>
