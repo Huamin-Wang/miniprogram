@@ -2,7 +2,7 @@
 <view class="container">
   <view class="header">
     <text class="title">仔细浏览，认真落实</text>
-    <button class="post-button" bindtap="showPostForm">发布信息</button>
+    <!-- <button class="post-button" bindtap="showPostForm">发布信息</button> -->
   </view>
 
   <view class="post-list">
