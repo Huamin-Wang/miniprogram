@@ -12,7 +12,7 @@ Page({
    * 生命周期函数--监听页面加载
    */
   onLoad() {
-
+    console.log("作业详情页面作业id："+this.options.assignment_id)
   },
 
   /**
