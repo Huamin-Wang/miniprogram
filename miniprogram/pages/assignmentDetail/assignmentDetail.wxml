@@ -1,6 +1,39 @@
-<!--pages/assignmentDetail/assignmentDetail.wxml-->
-<text>开发中，即将呈现！
-1.如果未提交，则显示提交界面
-2.如果已提交，则显示已提交界面
-3.如果已批改，则显示已批改界面
-</text>
+<!-- miniprogram/pages/assignmentDetail/assignmentDetail.wxml -->
+      <view class="assignment-detail">
+        <view class="assignment-header">
+          <text class="assignment-title">{{assignmentDetail.title}}</text>
+          <text class="assignment-date">截止日期：{{assignmentDetail.due_date}}</text>
+        </view>
+        <view class="assignment-desc">
+          <text>作业描述：{{assignmentDetail.description}}</text>
+        </view>
+
+        <!-- 未提交 -->
+        <view wx:if="{{!submission}}">
+          <form bindsubmit="onSubmit">
+            <textarea name="data" placeholder="请输入作业内容"></textarea>
+            <button formType="submit">提交作业</button>
+          </form>
+        </view>
+
+        <!-- 已提交 -->
+        <view wx:elif="{{submission}}">
+          <text>已提交内容：</text>
+          <view class="submission-content">{{submission.data}}</view>
+          <text>成绩：{{submission.grade}}</text>
+          <text>老师评语：{{submission.feedback}}</text>
+          <button bindtap="onUpdateAnswer">更新答案</button>
+        </view>
+
+        <!-- 更新答案对话框 -->
+        <view wx:if="{{showUpdateDialog}}" class="update-dialog">
+          <view class="dialog-content">
+            <textarea model:value="{{updateData}}" bindinput="onUpdateInput" placeholder="请输入新答案"></textarea>
+            <view class="dialog-actions">
+              <button bindtap="onConfirmUpdate">确认更新</button>
+              <button bindtap="onCancelUpdate">取消</button>
+            </view>
+          </view>
+        </view>
+
+      </view>

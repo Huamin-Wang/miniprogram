@@ -142,6 +142,18 @@ Page<{
       }
     });
   },
+ goToAssignmentDetail(e: WechatMiniprogram.TouchEvent): void {
+   const assignment_id = e.currentTarget.dataset.assignment_id as string;
+   if (assignment_id) {
+     const encodedAssignmentId = encodeURIComponent(assignment_id);
+     console.log("作业id", encodedAssignmentId);
+     wx.navigateTo({
+       url: `/pages/assignmentDetail/assignmentDetail?assignment_id=${encodedAssignmentId}`
+     });
+   } else {
+     console.error('作业 ID 为空，无法跳转');
+   }
+ },
   getStudentAssignmentsData(callback?: Function): void {
     const { openid } = this.data;
     wx.request<ResponseData>({
