@@ -21,7 +21,7 @@
           <text>已提交内容：</text>
           <view class="submission-content">{{submission.data}}</view>
           <text>成绩：{{submission.grade}}</text>
-          <text>老师评语：{{submission.feedback}}</text>
+          <text>AI评语：{{submission.feedback}}</text>
           <button bindtap="onUpdateAnswer">更新答案</button>
         </view>
 
