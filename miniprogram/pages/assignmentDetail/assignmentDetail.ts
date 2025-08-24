@@ -13,7 +13,7 @@ Page({
      * 生命周期函数--监听页面加载
      */
     onLoad() {
-        const assignmentId = this.options?.assignment_id;
+        const assignmentId = this.options && this.options.assignment_id;
         if (!assignmentId) {
             wx.showToast({
                 title: '作业ID缺失',
@@ -22,13 +22,13 @@ Page({
             return;
         }
         const userData = wx.getStorageSync<UserInfo>('userInfo');
-        if (!userData?.openid) {
-            wx.showToast({
-                title: '用户信息缺失',
-                icon: 'none'
-            });
-            return;
-        }
+        if (!userData || !userData.openid) {
+                    wx.showToast({
+                        title: '用户信息缺失',
+                        icon: 'none'
+                    });
+                    return;
+                }
         wx.request({
             url: `${config.baseUrl}/getAssignmentById/${assignmentId}?openid=${userData.openid}`,
             method: 'GET',

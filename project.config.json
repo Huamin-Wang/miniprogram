@@ -2,6 +2,8 @@
   "description": "项目配置文件",
   "miniprogramRoot": "miniprogram/",
   "compileType": "miniprogram",
+  "projectname": "智能教学辅助系统V1.0",
+  "name":"智能教学辅助系统V1",
   "setting": {
     "useCompilerPlugins": [
       "typescript",
