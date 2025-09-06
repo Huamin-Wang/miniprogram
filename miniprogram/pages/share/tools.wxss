@@ -1,0 +1,93 @@
+.container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  background-color: #f4f4f4;
+  min-height: 100vh;
+}
+
+.header {
+  background-color: #4CAF50;
+  padding: 12rpx 0; /* 减少上下留白 */
+  width: 100%;
+  text-align: center;
+}
+
+.header-title {
+  font-size: 34rpx;  /* 稍微减小字体 */
+  font-weight: bold;
+  color: white;
+}
+
+.main {
+  background-color: white;
+  padding: 24rpx;
+  margin: 20rpx 20rpx 30rpx 20rpx; /* 减小顶部间距 */
+  border-radius: 16rpx;
+  box-shadow: 0 0 16rpx rgba(0, 0, 0, 0.08);
+  width: 94%;
+}
+
+.category-title {
+  font-size: 32rpx;
+  color: #4CAF50;
+  margin: 30rpx 0 10rpx 0; /* 上下间距更紧凑 */
+  font-weight: bold;
+}
+
+.tools-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(300rpx, 1fr));
+  gap: 16rpx; /* 卡片间距缩小 */
+  margin-top: 10rpx;
+}
+
+.tool-card {
+  background-color: #fff;
+  border-radius: 12rpx;
+  box-shadow: 0 0 16rpx rgba(0, 0, 0, 0.08);
+  padding: 24rpx;
+  text-align: center;
+  transition: transform 0.2s;
+}
+
+.tool-card:active {
+  transform: scale(0.98);
+}
+
+.tool-icon {
+  font-size: 60rpx;
+  margin-bottom: 16rpx;
+  color: #4CAF50;
+}
+
+.tool-title {
+  font-size: 28rpx;
+  font-weight: bold;
+  color: #333;
+  margin-bottom: 8rpx;
+}
+
+.tool-description {
+  font-size: 24rpx;
+  color: #555;
+  margin-bottom: 16rpx;
+  display: block;
+  text-align: left;
+}
+
+.tool-link {
+  margin-top: 6rpx;
+  padding: 14rpx 22rpx;
+  border-radius: 8rpx;
+  background-color: #4CAF50;
+  color: white;
+  font-size: 26rpx;
+}
+
+.source-link {
+  font-size: 24rpx;
+  color: #007BFF;
+  margin-top: 14rpx;
+  display: block;
+}

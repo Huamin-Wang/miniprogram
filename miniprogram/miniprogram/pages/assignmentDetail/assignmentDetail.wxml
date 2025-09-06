@@ -1,6 +1,0 @@
-<!--pages/assignmentDetail/assignmentDetail.wxml-->
-<text>开发中，即将呈现！
-1.如果未提交，则显示提交界面
-2.如果已提交，则显示已提交界面
-3.如果已批改，则显示已批改界面
-</text>

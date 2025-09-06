@@ -20,6 +20,14 @@ Page({
     ],
     isCollected: false // 用于标记当前页面是否已收藏
   },
+goToshare(){
+    wx.navigateTo({
+        url: '/pages/share/tools',
+    });
+},
+
+
+
 
   onLoad() {
     // 检查是否有缓存的用户信息

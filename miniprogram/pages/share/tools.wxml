@@ -1,0 +1,54 @@
+
+  <view class="main">
+    <!-- 教学工具 -->
+    <view class="category-title">教学工具</view>
+    <view class="tools-grid">
+      <view class="tool-card">
+        <text class="tool-icon">📚</text>
+        <text class="tool-title">考试倒计时工具</text>
+        <text class="tool-description">
+          帮助教师轻松管理考试信息，并向学生提供准确的倒计时。
+        </text>
+        <button class="tool-link" bindtap="openUrl" data-url="https://huamin-wang.github.io/clock/">访问工具</button>
+        <text class="source-link" bindtap="openUrl" data-url="https://github.com/Huamin-Wang/clock">访问源代码</text>
+      </view>
+
+      <view class="tool-card">
+        <text class="tool-icon">📹</text>
+        <text class="tool-title">屏幕录制</text>
+        <text class="tool-description">
+          帮助教师录制各种学习教程。
+        </text>
+        <button class="tool-link" bindtap="openUrl" data-url="https://pan.baidu.com/s/159fOJPwj6V82Mdn2dlbgmw?pwd=9zw1">下载工具（提取码：9zw1）</button>
+      </view>
+    </view>
+<!-- 生活工具 -->
+    <view class="category-title">生活工具</view>
+    <view class="tools-grid">
+      <view class="tool-card">
+        <text class="tool-icon">🧠</text>
+        <text class="tool-title">嘉复盘</text>
+        <text class="tool-description">
+          嘉复盘是由学生团队开发的一款帮助用户进行复盘和自我反思的工具。它通过引导用户回顾和分析过去的事件、决策和行为，帮助他们从中吸取经验教训，提升自我认知和成长。无论是个人生活还是职业发展，嘉复盘都致力于帮助用户更好地理解自己，制定更有效的行动计划，实现持续进步。
+        </text>
+       <button  class="tool-link" bindtap="openMiniProgram" data-appid="wx7e1ff9cdb7daef42" data-path="/pages/addRecord/life/pie">
+  打开另一个小程序
+</button>
+
+      </view>
+    </view>
+    <!-- 学习工具 -->
+    <view class="category-title">学习工具</view>
+    <view class="tools-grid">
+      <view class="tool-card">
+        <text class="tool-icon">🤖</text>
+        <text class="tool-title">星火大模型</text>
+        <text class="tool-description">
+          讯飞星火认知大模型，由科大讯飞构建，是一个专为模拟人类语言交流与认知处理能力而设计的人工智能系统。通过高级自然语言处理技术，它能够理解用户的询问并给出精准的回答和解决方案。
+          其目标是满足用户在不同领域中的认知智能需求，无论是教育、医疗还是日常生活中的问题，都能提供有效的智能支持。
+        </text>
+        <button class="tool-link" bindtap="openUrl" data-url="https://xinghuo.xfyun.cn/desk">访问工具</button>
+      </view>
+    </view>
+  </view>
+

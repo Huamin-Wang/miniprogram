@@ -10,7 +10,8 @@
     "pages/register/register",
     "pages/teacher_profile/teacher_profile",
     "pages/assignmentDetail/assignmentDetail",
-    "pages/attendance/attendance"
+    "pages/attendance/attendance",
+    "pages/share/tools"
   ],
   "window": {
     "navigationBarTitleText": "智能教学辅助系统",
