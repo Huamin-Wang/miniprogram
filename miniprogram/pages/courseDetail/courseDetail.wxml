@@ -3,8 +3,8 @@
     <view class="card-header">
       <text class="header-text">课程信息</text>
       <view class="score-badge">
-        <text class="score-label">课程总评分</text>
-        <text class="score-value">{{score}}</text>
+        <!-- <text class="score-label">课程总评分</text>
+        <text class="score-value">{{score}}</text> -->
       </view>
     </view>
     
